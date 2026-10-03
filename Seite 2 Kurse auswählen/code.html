@@ -1,0 +1,193 @@
+﻿<!DOCTYPE html><html class="h-full" lang="de" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport">
+<title>SportKurseLive.de - Kursauswahl</title>
+<!-- Google Fonts: Manrope -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS v3 with plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Manrope', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#ecfdf5',
+              100: '#d1fae5',
+              500: '#10b981',
+              600: '#059669',
+              700: '#047857',
+              dark: '#0f172a'
+            }
+          }
+        }
+      }
+    }
+  </script>
+<!-- Strict Mobile Viewport No-Scroll Styles -->
+<style data-purpose="viewport-lock">
+    html, body {
+      height: 100%;
+      height: 100dvh;
+      overflow: hidden;
+      margin: 0;
+      padding: 0;
+      touch-action: manipulation;
+      user-select: none;
+      -webkit-user-select: none;
+      -webkit-tap-highlight-color: transparent;
+      font-family: 'Manrope', sans-serif;
+    }
+    .safe-top {
+      padding-top: env(safe-area-inset-top, 8px);
+    }
+    .safe-bottom {
+      padding-bottom: env(safe-area-inset-bottom, 12px);
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-b from-gray-50 via-slate-50 to-emerald-50/20 text-slate-800 antialiased flex flex-col justify-center items-center h-full px-3 py-2">
+<!-- BEGIN: Global Navigation Menu -->
+<div id="global-nav-menu" class="fixed top-2 left-2 z-[9999]">
+  <button id="menu-btn" class="flex flex-col items-center justify-center p-1.5 rounded-lg bg-white/95 backdrop-blur shadow border border-slate-200 hover:bg-slate-50 transition-colors cursor-pointer" onclick="toggleMenu()" aria-label="Menü öffnen" aria-expanded="false">
+    <svg class="w-5 h-5 text-slate-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+    </svg>
+    <span class="text-[9px] font-bold text-slate-600 mt-0.5">Menü</span>
+  </button>
+  <nav id="menu-dropdown" class="hidden absolute top-full left-0 mt-2 w-48 bg-white rounded-xl shadow-xl border border-slate-200 overflow-hidden" role="navigation">
+          <ul class="flex flex-col m-0 p-2 list-none gap-1">
+        <!-- Start -->
+        <li class="m-0">
+          <a href="../index.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-bold text-slate-700 hover:bg-slate-50 transition-colors">
+            <span class="material-symbols-outlined text-[20px] text-slate-400">home</span>
+            Startseite
+          </a>
+        </li>
+        
+        <div class="h-px bg-slate-100 my-1 mx-2"></div>
+        
+        <!-- Flow -->
+        <li class="m-0">
+          <a href="../Seite 2 Kurse auswählen/code.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-bold text-slate-700 hover:bg-emerald-50 hover:text-emerald-700 transition-colors group">
+            <div class="w-6 h-6 rounded bg-emerald-100 text-emerald-700 flex items-center justify-center text-[11px] font-black group-hover:bg-emerald-200 transition-colors">1</div>
+            Kurs wählen
+          </a>
+        </li>
+        <li class="m-0">
+          <a href="../Seite 3 Zuschuss/code.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-bold text-slate-700 hover:bg-emerald-50 hover:text-emerald-700 transition-colors group">
+            <div class="w-6 h-6 rounded bg-emerald-100 text-emerald-700 flex items-center justify-center text-[11px] font-black group-hover:bg-emerald-200 transition-colors">2</div>
+            Kassenzuschuss
+          </a>
+        </li>
+        
+        <div class="h-px bg-slate-100 my-1 mx-2"></div>
+
+        <!-- FAQ -->
+        <li class="m-0">
+          <a href="../Seite 4 fragenundKursbeschreibung/code.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-bold text-slate-700 hover:bg-slate-50 transition-colors">
+            <span class="material-symbols-outlined text-[20px] text-slate-400">help</span>
+            Häufige Fragen
+          </a>
+        </li>
+      </ul>
+  </nav>
+</div>
+<script>
+  function toggleMenu() {
+    const dropdown = document.getElementById('menu-dropdown');
+    dropdown.classList.toggle('hidden');
+  }
+  document.addEventListener('click', (e) => {
+    const menu = document.getElementById('global-nav-menu');
+    if (menu && !menu.contains(e.target)) {
+      document.getElementById('menu-dropdown').classList.add('hidden');
+    }
+  });
+</script>
+<!-- END: Global Navigation Menu -->
+<!-- BEGIN: TopBarHeader -->
+
+<!-- END: TopBarHeader -->
+<!-- BEGIN: MainContent -->
+<main class="w-full max-w-md mx-auto flex flex-col items-center justify-center gap-2 overflow-hidden py-2 h-full" data-purpose="course-selection-view"><section class="text-center shrink-0 mb-0" data-purpose="hero-title"><h1 class="text-lg sm:text-xl font-extrabold text-slate-900 max-w-sm mx-auto leading-snug tracking-tight">Herzlich willkommen beim <span class="text-emerald-600 underline decoration-emerald-300 decoration-2 underline-offset-2">Live Kursportal</span> in Zusammenarbeit mit allen Krankenkassen</h1><div class="flex items-center justify-center gap-1.5 text-xs font-bold text-emerald-700 mt-1.5 bg-emerald-50 border border-emerald-100/80 rounded-full py-0.5 px-3 w-fit mx-auto shadow-2xs"><svg class="w-3.5 h-3.5 text-emerald-600 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="">(Kostenübernahme durch die Krankenkasse)</span></div><p class="text-[11px] font-medium text-slate-400 text-center mt-2 mb-1 leading-tight px-4">Welcher Kurs passt am besten zu dir? Klicke ihn an und sehe die Erstattung deiner Krankenkasse.</p></section><section class="flex flex-col w-full gap-2" data-purpose="course-list"><article class="course-card flex items-center justify-between p-2 rounded-xl bg-white border-2 shadow-sm transition-all duration-150 cursor-pointer active:scale-[0.98] border-slate-200" data-course-id="rueckenfit" data-purpose="course-item" onclick="toggleCard(this)"><div class="flex items-center gap-3 flex-1 min-w-0"><div class="relative w-20 h-16 rounded-lg overflow-hidden shrink-0 border border-slate-200 shadow-2xs"><img alt="Rückenfit Kurs" class="w-full h-full object-cover object-center" src="../bilder person/RückenBandZug.png"><span class="absolute top-1 left-1 bg-black/75 backdrop-blur-xs text-white text-[8px] font-extrabold px-1.5 py-0.5 rounded leading-none">Live Zoom</span><span class="absolute bottom-1 left-1 bg-emerald-600 text-white text-[7.5px] font-bold px-1.5 py-0.5 rounded leading-none">Top Favorit</span></div><div class="flex flex-col text-left min-w-0 pr-1"><h2 class="font-extrabold text-[13.5px] text-slate-900 leading-tight truncate">Rückenfit</h2><div class="flex items-center gap-1.5 mt-0.5"><span class="text-[10.5px] font-medium text-slate-500 shrink-0 whitespace-nowrap">10x 60 Min.</span><span class="text-[8px] text-slate-400">•</span><span class="inline-flex items-center text-[10px] font-semibold text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded leading-none shrink-0">Rückengesundheit</span></div><p class="text-[10.5px] text-slate-500 mt-0.5 truncate leading-tight">Stärkt Rücken &amp; Löst Verspannungen</p></div></div><div class="checkbox-circle ml-2 w-6 h-6 rounded-full flex items-center justify-center shrink-0 shadow-xs transition-colors bg-white border-2 border-slate-300"><svg class="check-icon w-3.5 h-3.5 text-white hidden" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"></path></svg></div></article><article class="course-card flex items-center justify-between p-2 rounded-xl bg-white border-2 border-slate-200 shadow-sm transition-all duration-150 cursor-pointer active:scale-[0.98]" data-course-id="ganzkoerper" data-purpose="course-item" onclick="toggleCard(this)"><div class="flex items-center gap-3 flex-1 min-w-0"><div class="relative w-20 h-16 rounded-lg overflow-hidden shrink-0 border border-slate-200 shadow-2xs"><img alt="Ganzkörpertraining Kurs" class="w-full h-full object-cover object-center" src="../bilder person/SteheSeiteZieh.png"><span class="absolute top-1 left-1 bg-black/75 backdrop-blur-xs text-white text-[8px] font-extrabold px-1.5 py-0.5 rounded leading-none">Live Zoom</span><span class="absolute bottom-1 left-1 bg-blue-600 text-white text-[7.5px] font-bold px-1.5 py-0.5 rounded leading-none">Kraft &amp; Ausdauer</span></div><div class="flex flex-col text-left min-w-0 pr-1"><h2 class="font-extrabold text-[13.5px] text-slate-900 leading-tight truncate">Ganzkörpertraining</h2><div class="flex items-center gap-1.5 mt-0.5"><span class="text-[10.5px] font-medium text-slate-500 shrink-0 whitespace-nowrap">10x 60 Min.</span><span class="text-[8px] text-slate-400">•</span><span class="inline-flex items-center text-[10px] font-semibold text-blue-700 bg-blue-50 px-1.5 py-0.5 rounded leading-none shrink-0">Funktionelle Fitness</span></div><p class="text-[10.5px] text-slate-500 mt-0.5 truncate leading-tight">Fettverbrennung &amp; Muskelaufbau</p></div></div><div class="checkbox-circle ml-2 w-6 h-6 rounded-full border-2 border-slate-300 bg-white flex items-center justify-center shrink-0 transition-colors"><svg class="check-icon hidden w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"></path></svg></div></article><article class="course-card flex items-center justify-between p-2 rounded-xl bg-white border-2 shadow-sm transition-all duration-150 cursor-pointer active:scale-[0.98] border-slate-200" data-course-id="pilates" data-purpose="course-item" onclick="toggleCard(this)"><div class="flex items-center gap-3 flex-1 min-w-0"><div class="relative w-20 h-16 rounded-lg overflow-hidden shrink-0 border border-slate-200 shadow-2xs"><img alt="Rückenfit mit Pilates Kurs" class="w-full h-full object-cover object-center" src="../bilder person/Beckenheben.png"><span class="absolute top-1 left-1 bg-black/75 backdrop-blur-xs text-white text-[8px] font-extrabold px-1.5 py-0.5 rounded leading-none">Live Zoom</span><span class="absolute bottom-1 left-1 bg-purple-600 text-white text-[7.5px] font-bold px-1.5 py-0.5 rounded leading-none">Sanft &amp; Effektiv</span></div><div class="flex flex-col text-left min-w-0 pr-1"><h2 class="font-extrabold text-[13.5px] text-slate-900 leading-tight truncate">Rückenfit mit Pilates</h2><div class="flex items-center gap-1.5 mt-0.5"><span class="text-[10.5px] font-medium text-slate-500 shrink-0 whitespace-nowrap">10x 60 Min.</span><span class="text-[8px] text-slate-400">•</span><span class="inline-flex items-center text-[10px] font-semibold text-purple-700 bg-purple-50 px-1.5 py-0.5 rounded leading-none shrink-0">Rücken &amp; Balance</span></div><p class="text-[10.5px] text-slate-500 mt-0.5 truncate leading-tight">Tiefe Rumpf- &amp; Rückenstabilität</p></div></div><div class="checkbox-circle ml-2 w-6 h-6 rounded-full flex items-center justify-center shrink-0 transition-colors bg-white border-2 border-slate-300"><svg class="check-icon w-3.5 h-3.5 text-white hidden" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"></path></svg></div></article></section><div class="w-full shrink-0 pt-1 pb-0" data-purpose="docked-cta"><button class="w-full bg-gradient-to-r from-emerald-500 via-teal-600 to-emerald-600 hover:from-emerald-600 hover:to-teal-700 text-white font-extrabold py-2.5 px-3 rounded-xl shadow-md shadow-emerald-500/25 active:scale-[0.98] transition-all flex items-center justify-center gap-2 group" id="submit-selection-btn" type="button"><span class="text-[12px] leading-tight text-center tracking-tight">Fortfahren &amp; Erstattung der Krankenkasse sehen</span><svg class="w-4 h-4 shrink-0 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round"></path></svg></button></div></main>
+<!-- END: MainContent -->
+<!-- BEGIN: StickyFooterCTA -->
+
+<!-- END: StickyFooterCTA -->
+<!-- BEGIN: InteractionLogic -->
+<script data-purpose="course-card-interactions">
+          /**
+       * Toggles course selection state on click
+       * Enforces single selection for booking flow
+       */
+      function toggleCard(cardElement) {
+        // Unselect others
+        document.querySelectorAll('.course-card').forEach(card => {
+           if(card !== cardElement) {
+             card.classList.remove('is-selected', 'border-emerald-500', 'bg-emerald-50/20');
+             card.classList.add('border-slate-200', 'bg-white');
+             const circle = card.querySelector('.checkbox-circle');
+             const checkIcon = card.querySelector('.check-icon');
+             if(circle) {
+               circle.classList.remove('bg-emerald-500', 'border-transparent');
+               circle.classList.add('bg-white', 'border-2', 'border-slate-300');
+             }
+             if(checkIcon) checkIcon.classList.add('hidden');
+           }
+        });
+
+        const isSelected = cardElement.classList.contains('is-selected');
+        const circle = cardElement.querySelector('.checkbox-circle');
+        const checkIcon = cardElement.querySelector('.check-icon');
+  
+        if (isSelected) {
+          // Deselect
+          cardElement.classList.remove('is-selected', 'border-emerald-500', 'bg-emerald-50/20');
+          cardElement.classList.add('border-slate-200', 'bg-white');
+          
+          circle.classList.remove('bg-emerald-500', 'border-transparent');
+          circle.classList.add('bg-white', 'border-2', 'border-slate-300');
+          checkIcon.classList.add('hidden');
+        } else {
+          // Select
+          cardElement.classList.add('is-selected', 'border-emerald-500', 'bg-emerald-50/20');
+          cardElement.classList.remove('border-slate-200');
+          
+          circle.classList.add('bg-emerald-500', 'border-transparent');
+          circle.classList.remove('bg-white', 'border-2', 'border-slate-300');
+          checkIcon.classList.remove('hidden');
+        }
+  
+        // Haptic feedback if supported by browser/iOS
+        if (window.navigator && window.navigator.vibrate) {
+          window.navigator.vibrate(10);
+        }
+      }
+
+      document.addEventListener('DOMContentLoaded', () => {
+         const submitBtn = document.getElementById('submit-selection-btn');
+         if(submitBtn) {
+            submitBtn.addEventListener('click', () => {
+               const selected = document.querySelector('.course-card.is-selected');
+               if(selected) {
+                   localStorage.setItem('selectedCourse', selected.getAttribute('data-course-id'));
+                   window.location.href = '../Seite 3 Zuschuss/code.html';
+               } else {
+                   alert('Bitte wähle zuerst einen Kurs aus.');
+               }
+            });
+         }
+      });
+  </script>
+<!-- END: InteractionLogic -->
+
+
+
+
+</body></html>

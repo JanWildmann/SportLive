@@ -1,0 +1,522 @@
+﻿<!DOCTYPE html>
+
+<html class="scroll-smooth antialiased" lang="de"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SportKurseLive.de - Häufig gestellte Fragen &amp; Kurse</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Plus+Jakarta+Sans:wght@700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Manrope', 'sans-serif'],
+            display: ['Plus Jakarta Sans', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              teal: '#0d9488',
+              tealLight: '#14b8a6',
+              blue: '#2563eb',
+              blueLight: '#3b82f6',
+              bgLight: '#f8fafc',
+            }
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      font-family: 'Manrope', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      background-color: #f8fafc;
+    }
+    
+    details > summary {
+      list-style: none;
+    }
+    details > summary::-webkit-details-marker {
+      display: none;
+    }
+    
+    details[open] summary svg.chevron {
+      transform: rotate(180deg);
+    }
+    
+    details[open] {
+      border-color: #cbd5e1;
+      background-color: #ffffff;
+      box-shadow: 0 4px 12px -2px rgba(15, 23, 42, 0.05);
+    }
+  </style>
+</head>
+<body class="min-h-screen text-slate-800 bg-[#f8fafc]">
+<!-- BEGIN: Global Navigation Menu -->
+<div id="global-nav-menu" class="fixed top-2 left-2 z-[9999]">
+  <button id="menu-btn" class="flex flex-col items-center justify-center p-1.5 rounded-lg bg-white/95 backdrop-blur shadow border border-slate-200 hover:bg-slate-50 transition-colors cursor-pointer" onclick="toggleMenu()" aria-label="Menü öffnen" aria-expanded="false">
+    <svg class="w-5 h-5 text-slate-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+    </svg>
+    <span class="text-[9px] font-bold text-slate-600 mt-0.5">Menü</span>
+  </button>
+  <nav id="menu-dropdown" class="hidden absolute top-full left-0 mt-2 w-48 bg-white rounded-xl shadow-xl border border-slate-200 overflow-hidden" role="navigation">
+          <ul class="flex flex-col m-0 p-2 list-none gap-1">
+        <!-- Start -->
+        <li class="m-0">
+          <a href="../index.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-bold text-slate-700 hover:bg-slate-50 transition-colors">
+            <span class="material-symbols-outlined text-[20px] text-slate-400">home</span>
+            Startseite
+          </a>
+        </li>
+        
+        <div class="h-px bg-slate-100 my-1 mx-2"></div>
+        
+        <!-- Flow -->
+        <li class="m-0">
+          <a href="../Seite 2 Kurse auswählen/code.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-bold text-slate-700 hover:bg-emerald-50 hover:text-emerald-700 transition-colors group">
+            <div class="w-6 h-6 rounded bg-emerald-100 text-emerald-700 flex items-center justify-center text-[11px] font-black group-hover:bg-emerald-200 transition-colors">1</div>
+            Kurs wählen
+          </a>
+        </li>
+        <li class="m-0">
+          <a href="../Seite 3 Zuschuss/code.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-bold text-slate-700 hover:bg-emerald-50 hover:text-emerald-700 transition-colors group">
+            <div class="w-6 h-6 rounded bg-emerald-100 text-emerald-700 flex items-center justify-center text-[11px] font-black group-hover:bg-emerald-200 transition-colors">2</div>
+            Kassenzuschuss
+          </a>
+        </li>
+        
+        <div class="h-px bg-slate-100 my-1 mx-2"></div>
+
+        <!-- FAQ -->
+        <li class="m-0">
+          <a href="../Seite 4 fragenundKursbeschreibung/code.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-bold text-slate-700 hover:bg-slate-50 transition-colors">
+            <span class="material-symbols-outlined text-[20px] text-slate-400">help</span>
+            Häufige Fragen
+          </a>
+        </li>
+      </ul>
+  </nav>
+</div>
+<script>
+  function toggleMenu() {
+    const dropdown = document.getElementById('menu-dropdown');
+    dropdown.classList.toggle('hidden');
+  }
+  document.addEventListener('click', (e) => {
+    const menu = document.getElementById('global-nav-menu');
+    if (menu && !menu.contains(e.target)) {
+      document.getElementById('menu-dropdown').classList.add('hidden');
+    }
+  });
+</script>
+<!-- END: Global Navigation Menu -->
+<!-- Minimal Header with Back Button -->
+<header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-100 pl-16 pr-4 md:px-8 py-3.5 flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-3">
+<button aria-label="Zurück" class="w-9 h-9 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-slate-200 transition-colors" onclick="window.history.back()">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M15 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path>
+</svg>
+</button>
+<div class="flex items-center gap-1.5 font-display font-extrabold text-slate-900 tracking-tight text-lg">
+<span class="w-6 h-6 rounded-md bg-gradient-to-r from-emerald-500 to-teal-600 text-white flex items-center justify-center text-xs font-black shadow-sm">S</span>
+<span>SportKurse<span class="text-emerald-500 font-black">Live</span>.de</span>
+</div>
+</div>
+<span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-slate-100 text-slate-600">FAQ &amp; Kurse</span>
+</header>
+<main class="max-w-4xl mx-auto px-4 py-8">
+<!-- FAQ Sektion (Exakt beibehalten) -->
+<section class="max-w-2xl mx-auto mb-16">
+<!-- Exakter Badge aus Screen 102 -->
+<div class="flex items-center gap-2 mb-3">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold tracking-wide uppercase bg-emerald-50 text-emerald-700 border border-emerald-200/60 shadow-xs">
+<svg class="w-3.5 h-3.5 text-blue-500" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<circle cx="12" cy="12" r="10" stroke-width="2"></circle>
+<path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3m.08 4h.01" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+          Antworten auf deine Fragen
+        </span>
+</div>
+<!-- Exakter Titel & Untertitel aus Screen 102 -->
+<div class="mb-6">
+<h1 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
+          Häufig gestellte <span class="text-teal-600">Fragen</span>
+</h1>
+<p class="text-sm text-slate-600 mt-1 leading-relaxed">
+          Alles, was du über unsere ZPP-zertifizierten Live-Online-Präventionskurse wissen musst.
+        </p>
+</div>
+<!-- Exakte FAQ Liste aus Screen 102 (Ziffern-Badges 1 bis 6 + Akkordeon Details) -->
+<div class="space-y-3">
+<!-- Frage 1 -->
+<details class="group bg-white rounded-2xl border border-slate-200/80 p-4 transition-all duration-200 shadow-xs">
+<summary class="flex items-center justify-between gap-3 cursor-pointer select-none">
+<div class="flex items-center gap-3.5">
+<span class="w-7 h-7 rounded-lg bg-emerald-50 text-emerald-700 font-extrabold text-sm flex items-center justify-center shrink-0 border border-emerald-100">
+                1
+              </span>
+<span class="text-[15px] font-bold text-slate-900 leading-snug">
+                Ist das Training wirklich 100% Live und kann mich der Trainer korrigieren?
+              </span>
+</div>
+<svg class="chevron w-5 h-5 text-slate-400 shrink-0 transition-transform duration-200" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path>
+</svg>
+</summary>
+<div class="pt-3.5 pl-10.5 text-sm text-slate-600 leading-relaxed border-t border-slate-100 mt-3">
+            Ja, absolut! Es handelt sich um keine voraufgezeichneten Videos. Jan Wildmann leitet jede Einheit live über Zoom an. In kleinen Gruppen behält er jeden Teilnehmer im Blick, gibt individuelle verbale Korrekturen in Echtzeit und sorgt für eine saubere, gesunde Bewegungsausführung.
+          </div>
+</details>
+<!-- Frage 2 -->
+<details class="group bg-white rounded-2xl border border-slate-200/80 p-4 transition-all duration-200 shadow-xs">
+<summary class="flex items-center justify-between gap-3 cursor-pointer select-none">
+<div class="flex items-center gap-3.5">
+<span class="w-7 h-7 rounded-lg bg-emerald-50 text-emerald-700 font-extrabold text-sm flex items-center justify-center shrink-0 border border-emerald-100">
+                2
+              </span>
+<span class="text-[15px] font-bold text-slate-900 leading-snug">
+                Wie funktioniert die Teilnahme über Zoom?
+              </span>
+</div>
+<svg class="chevron w-5 h-5 text-slate-400 shrink-0 transition-transform duration-200" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path>
+</svg>
+</summary>
+<div class="pt-3.5 pl-10.5 text-sm text-slate-600 leading-relaxed border-t border-slate-100 mt-3">
+            Kinderleicht: Nach der Buchung erhältst du deinen persönlichen Einwahllink per E-Mail sowie Terminerinnerungen. Klicke 5 Minuten vor Kursbeginn einfach auf den Link (am Laptop, Tablet oder Smartphone) – Zoom öffnet sich automatisch und du bist direkt im virtuellen Kursraum.
+          </div>
+</details>
+<!-- Frage 3 -->
+<details class="group bg-white rounded-2xl border border-slate-200/80 p-4 transition-all duration-200 shadow-xs">
+<summary class="flex items-center justify-between gap-3 cursor-pointer select-none">
+<div class="flex items-center gap-3.5">
+<span class="w-7 h-7 rounded-lg bg-emerald-50 text-emerald-700 font-extrabold text-sm flex items-center justify-center shrink-0 border border-emerald-100">
+                3
+              </span>
+<span class="text-[15px] font-bold text-slate-900 leading-snug">
+                Muss ich meine Kamera zwingend eingeschaltet lassen?
+              </span>
+</div>
+<svg class="chevron w-5 h-5 text-slate-400 shrink-0 transition-transform duration-200" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path>
+</svg>
+</summary>
+<div class="pt-3.5 pl-10.5 text-sm text-slate-600 leading-relaxed border-t border-slate-100 mt-3">
+            Für die offizielle Krankenkassenanerkennung nach § 20 SGB V und das persönliche Korrektur-Feedback empfehlen wir die eingeschaltete Kamera dringend. Solltest du dich einmal unwohl fühlen oder technische Gründe vorliegen, ist das kurzzeitig kein Problem.
+          </div>
+</details>
+<!-- Frage 4 -->
+<details class="group bg-white rounded-2xl border border-slate-200/80 p-4 transition-all duration-200 shadow-xs">
+<summary class="flex items-center justify-between gap-3 cursor-pointer select-none">
+<div class="flex items-center gap-3.5">
+<span class="w-7 h-7 rounded-lg bg-emerald-50 text-emerald-700 font-extrabold text-sm flex items-center justify-center shrink-0 border border-emerald-100">
+                4
+              </span>
+<span class="text-[15px] font-bold text-slate-900 leading-snug">
+                Wie funktioniert die Rückerstattung durch die Krankenkasse?
+              </span>
+</div>
+<svg class="chevron w-5 h-5 text-slate-400 shrink-0 transition-transform duration-200" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path>
+</svg>
+</summary>
+<div class="pt-3.5 pl-10.5 text-sm text-slate-600 leading-relaxed border-t border-slate-100 mt-3">
+            Unsere Kurse sind durch die Zentrale Prüfstelle Prävention (ZPP) zertifiziert. Du nimmst an mindestens 8 von 10 Live-Terminen teil. Am Kursende stellen wir dir automatisch die offizielle Teilnahmebescheinigung aus. Diese lädst du einfach in der App deiner Krankenkasse hoch oder reichst sie ein – die Kasse überweist dir den Zuschuss (oft 80–100 %) direkt auf dein Konto.
+          </div>
+</details>
+<!-- Frage 5 -->
+<details class="group bg-white rounded-2xl border border-slate-200/80 p-4 transition-all duration-200 shadow-xs">
+<summary class="flex items-center justify-between gap-3 cursor-pointer select-none">
+<div class="flex items-center gap-3.5">
+<span class="w-7 h-7 rounded-lg bg-emerald-50 text-emerald-700 font-extrabold text-sm flex items-center justify-center shrink-0 border border-emerald-100">
+                5
+              </span>
+<span class="text-[15px] font-bold text-slate-900 leading-snug">
+                Wer kann alles an den Kursen teilnehmen (auch Anfänger/Senioren)?
+              </span>
+</div>
+<svg class="chevron w-5 h-5 text-slate-400 shrink-0 transition-transform duration-200" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path>
+</svg>
+</summary>
+<div class="pt-3.5 pl-10.5 text-sm text-slate-600 leading-relaxed border-t border-slate-100 mt-3">
+            Jeder ab 18 Jahren! Die Kurse sind speziell für Einsteiger, Wiedereinsteiger, Schreibtischtäter mit Rückenbeschwerden sowie Senioren konzipiert. Jan bietet für jede Übung verschiedene Intensitätsstufen an, sodass du immer in deinem Wohlfühl- und Leistungsbereich trainierst.
+          </div>
+</details>
+<!-- Frage 6 -->
+<details class="group bg-white rounded-2xl border border-slate-200/80 p-4 transition-all duration-200 shadow-xs">
+<summary class="flex items-center justify-between gap-3 cursor-pointer select-none">
+<div class="flex items-center gap-3.5">
+<span class="w-7 h-7 rounded-lg bg-emerald-50 text-emerald-700 font-extrabold text-sm flex items-center justify-center shrink-0 border border-emerald-100">
+                6
+              </span>
+<span class="text-[15px] font-bold text-slate-900 leading-snug">
+                Was brauche ich an Ausrüstung zu Hause?
+              </span>
+</div>
+<svg class="chevron w-5 h-5 text-slate-400 shrink-0 transition-transform duration-200" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path>
+</svg>
+</summary>
+<div class="pt-3.5 pl-10.5 text-sm text-slate-600 leading-relaxed border-t border-slate-100 mt-3">
+            Nur eine rutschfeste Matte (oder ein Teppich), bequeme Sportkleidung und etwa 2×2 Meter Platz. Das passende Widerstands-Trainingsband schicken wir dir nach der Buchung kostenlos direkt per Post nach Hause!
+          </div>
+</details>
+</div>
+</section>
+<!-- Sektion: Unsere zertifizierten Präventionskurse (Variante 2: Ausführliche Split-Showcases im Magazin-Look) -->
+<section id="kurse" class="border-t border-slate-200/80 pt-14 mb-16">
+<!-- Sektions-Header -->
+<div class="text-center max-w-2xl mx-auto mb-12">
+<div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-50 text-emerald-800 border border-emerald-200/70 mb-3 shadow-xs">
+<span class="material-symbols-outlined text-[16px] text-emerald-600">verified</span>
+          Bis zu 100% Krankenkassen-Zuschuss (§ 20 SGB V)
+        </div>
+<h2 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
+          Entdecke unsere <span class="text-teal-600">3 Live-Kurse</span>
+</h2>
+<p class="text-sm sm:text-base text-slate-600 mt-2">
+          Trainiere live, interaktiv und mit persönlicher Trainer-Korrektur in kleinen Gruppen direkt aus deinem Wohnzimmer.
+        </p>
+</div>
+<!-- Kurs-Showcases: Alternierendes Split-Layout -->
+<div class="space-y-12">
+<!-- Kurs 1: Rückenfit (Bild links / Text rechts) -->
+<article class="bg-white rounded-3xl border border-slate-200/80 shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-0 items-center">
+<!-- Bild links -->
+<div class="md:col-span-6 relative h-64 md:h-full min-h-[300px] overflow-hidden bg-slate-100">
+<img alt="Kurs Rückenfit mit Trainer Jan Wildmann" class="w-full h-full object-cover object-center transform hover:scale-105 transition-transform duration-500" src="../bilder person/RückenBandZug.png"/>
+<div class="absolute top-4 left-4 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-900/80 backdrop-blur-md text-white text-xs font-bold shadow-md">
+<span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+                100% Live Zoom
+              </div>
+<div class="absolute bottom-3 left-3 bg-white/90 backdrop-blur-sm px-2.5 py-1 rounded-lg text-[11px] font-semibold text-slate-700 shadow-xs">
+                Kostenloses TheraBand inklusive
+              </div>
+</div>
+<!-- Text rechts -->
+<div class="md:col-span-6 p-6 sm:p-8 flex flex-col justify-between">
+<div>
+<div class="inline-flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-emerald-700 mb-1">
+<span class="material-symbols-outlined text-[15px]">verified</span>
+                  ZPP §20 Zertifiziert • Bis zu 100% Erstattung
+                </div>
+<h3 class="text-2xl font-black text-slate-900 tracking-tight mb-2">Rückenfit</h3>
+<p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-5">
+                  Gezielte Entlastung für Nacken, Schultern und den unteren Rücken. Ideal bei sitzender Tätigkeit und wiederkehrenden Verspannungen.
+                </p>
+<!-- Strukturierte Module -->
+<div class="space-y-2.5 mb-5 border-y border-slate-100 py-4">
+<div class="flex items-center gap-3 text-xs sm:text-sm text-slate-800 font-semibold">
+<span class="w-7 h-7 rounded-lg bg-teal-50 text-teal-700 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px]">accessibility_new</span>
+</span>
+<span>Mobilität &amp; Schulteröffnung</span>
+</div>
+<div class="flex items-center gap-3 text-xs sm:text-sm text-slate-800 font-semibold">
+<span class="w-7 h-7 rounded-lg bg-teal-50 text-teal-700 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px]">fitness_center</span>
+</span>
+<span>Gezielte Rückenstrecker-Kräftigung</span>
+</div>
+<div class="flex items-center gap-3 text-xs sm:text-sm text-slate-800 font-semibold">
+<span class="w-7 h-7 rounded-lg bg-teal-50 text-teal-700 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px]">chair</span>
+</span>
+<span>Ergonomie-Transfer für deinen Alltag</span>
+</div>
+</div>
+<!-- Highlight Wirksamkeits-Zitat -->
+<blockquote class="bg-slate-50 border-l-4 border-teal-600 p-3.5 rounded-r-xl mb-6">
+<p class="text-xs sm:text-sm font-semibold italic text-slate-700 leading-relaxed">
+                    „Schon nach wenigen Wochen sagst du Nackenschmerzen und Verspannungen für immer Adieu.“
+                  </p>
+</blockquote>
+</div>
+<div class="flex items-center justify-between pt-2">
+<span class="text-xs font-semibold text-slate-500">10 Wochen • 100% Live</span>
+<a class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs sm:text-sm shadow-md transition-all" href="#kurs-auswahl">
+                  Kurs wählen
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</a>
+</div>
+</div>
+</div>
+</article>
+<!-- Kurs 2: Ganzkörpertraining (Text links / Bild rechts) -->
+<article class="bg-white rounded-3xl border border-slate-200/80 shadow-md hover:shadow-lg transition-all duration-300 border-l-4 border-l-blue-600 overflow-hidden">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-0 items-center">
+<!-- Text links -->
+<div class="md:col-span-6 p-6 sm:p-8 flex flex-col justify-between order-2 md:order-1">
+<div>
+<div class="inline-flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-blue-700 mb-1">
+<span class="material-symbols-outlined text-[15px]">verified</span>
+                  ZPP §20 Zertifiziert • Bis zu 100% Erstattung
+                </div>
+<h3 class="text-2xl font-black text-slate-900 tracking-tight mb-2">Ganzkörpertraining</h3>
+<p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-5">
+                  Ganzheitlicher Muskelaufbau und Ausdauer mit dem eigenen Körpergewicht und Band für maximale Energie und Kraft im Alltag.
+                </p>
+<!-- Strukturierte Module -->
+<div class="space-y-2.5 mb-5 border-y border-slate-100 py-4">
+<div class="flex items-center gap-3 text-xs sm:text-sm text-slate-800 font-semibold">
+<span class="w-7 h-7 rounded-lg bg-blue-50 text-blue-700 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px]">sports_gymnastics</span>
+</span>
+<span>Ganzheitliche Muskelaktivierung</span>
+</div>
+<div class="flex items-center gap-3 text-xs sm:text-sm text-slate-800 font-semibold">
+<span class="w-7 h-7 rounded-lg bg-blue-50 text-blue-700 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px]">nordic_walking</span>
+</span>
+<span>Rumpf- &amp; Beinachsen-Stabilität</span>
+</div>
+<div class="flex items-center gap-3 text-xs sm:text-sm text-slate-800 font-semibold">
+<span class="w-7 h-7 rounded-lg bg-blue-50 text-blue-700 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px]">bolt</span>
+</span>
+<span>Stoffwechsel &amp; Vitalitäts-Kick</span>
+</div>
+</div>
+<!-- Highlight Wirksamkeits-Zitat -->
+<blockquote class="bg-blue-50/60 border-l-4 border-blue-600 p-3.5 rounded-r-xl mb-6">
+<p class="text-xs sm:text-sm font-semibold italic text-slate-700 leading-relaxed">
+                    „Erlebe die Leichtigkeit im Körper zurück – du wirst spüren, wie jede Bewegung müheloser gelingt.“
+                  </p>
+</blockquote>
+</div>
+<div class="flex items-center justify-between pt-2">
+<span class="text-xs font-semibold text-slate-500">10 Wochen • 100% Live</span>
+<a class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs sm:text-sm shadow-md transition-all" href="#kurs-auswahl">
+                  Kurs wählen
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</a>
+</div>
+</div>
+<!-- Dynamisches Bild rechts -->
+<div class="md:col-span-6 relative h-64 md:h-full min-h-[300px] overflow-hidden bg-slate-100 order-1 md:order-2">
+<img alt="Kurs Ganzkörpertraining mit Jan Wildmann" class="w-full h-full object-cover object-center transform hover:scale-105 transition-transform duration-500" src="../bilder person/SteheSeiteZieh.png"/>
+<div class="absolute top-4 right-4 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-900/80 backdrop-blur-md text-white text-xs font-bold shadow-md">
+<span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+                100% Live Zoom
+              </div>
+<div class="absolute bottom-3 right-3 bg-white/90 backdrop-blur-sm px-2.5 py-1 rounded-lg text-[11px] font-semibold text-slate-700 shadow-xs">
+                Inklusive Premium Band
+              </div>
+</div>
+</div>
+</article>
+<!-- Kurs 3: Rückenfit mit Pilateselementen (Bild links / Text rechts) -->
+<article class="bg-white rounded-3xl border border-slate-200/80 shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-0 items-center">
+<!-- Bild links -->
+<div class="md:col-span-6 relative h-64 md:h-full min-h-[300px] overflow-hidden bg-slate-100">
+<img alt="Kurs Rückenfit mit Pilateselementen mit Jan Wildmann" class="w-full h-full object-cover object-center transform hover:scale-105 transition-transform duration-500" src="../bilder person/Beckenheben.png"/>
+<div class="absolute top-4 left-4 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-900/80 backdrop-blur-md text-white text-xs font-bold shadow-md">
+<span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+                100% Live Zoom
+              </div>
+<div class="absolute bottom-3 left-3 bg-white/90 backdrop-blur-sm px-2.5 py-1 rounded-lg text-[11px] font-semibold text-slate-700 shadow-xs">
+                Sanft &amp; hochwirksam
+              </div>
+</div>
+<!-- Text rechts -->
+<div class="md:col-span-6 p-6 sm:p-8 flex flex-col justify-between">
+<div>
+<div class="inline-flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-emerald-700 mb-1">
+<span class="material-symbols-outlined text-[15px]">verified</span>
+                  ZPP §20 Zertifiziert • Bis zu 100% Erstattung
+                </div>
+<h3 class="text-2xl font-black text-slate-900 tracking-tight mb-2">Rückenfit mit Pilateselementen</h3>
+<p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-5">
+                  Verbindet effektives Rückentraining mit feinen Tiefenmuskel-Reizen, bewusster Atmung und Entlastung für Wirbelsäule und Gelenke.
+                </p>
+<!-- Strukturierte Module -->
+<div class="space-y-2.5 mb-5 border-y border-slate-100 py-4">
+<div class="flex items-center gap-3 text-xs sm:text-sm text-slate-800 font-semibold">
+<span class="w-7 h-7 rounded-lg bg-teal-50 text-teal-700 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px]">self_improvement</span>
+</span>
+<span>Präzise Core- &amp; Beckenbodenarbeit</span>
+</div>
+<div class="flex items-center gap-3 text-xs sm:text-sm text-slate-800 font-semibold">
+<span class="w-7 h-7 rounded-lg bg-teal-50 text-teal-700 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px]">spa</span>
+</span>
+<span>Sanfte Dehnung &amp; Wirbelsäulenentlastung</span>
+</div>
+<div class="flex items-center gap-3 text-xs sm:text-sm text-slate-800 font-semibold">
+<span class="w-7 h-7 rounded-lg bg-teal-50 text-teal-700 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px]">air</span>
+</span>
+<span>Tiefenentspannung &amp; Atmung</span>
+</div>
+</div>
+<!-- Highlight Wirksamkeits-Zitat -->
+<blockquote class="bg-slate-50 border-l-4 border-teal-600 p-3.5 rounded-r-xl mb-6">
+<p class="text-xs sm:text-sm font-semibold italic text-slate-700 leading-relaxed">
+                    „Deine Haltung richtet sich wie von selbst auf – für ein federleichtes, schmerzfreies Gefühl im ganzen Rücken.“
+                  </p>
+</blockquote>
+</div>
+<div class="flex items-center justify-between pt-2">
+<span class="text-xs font-semibold text-slate-500">10 Wochen • 100% Live</span>
+<a class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs sm:text-sm shadow-md transition-all" href="#kurs-auswahl">
+                  Kurs wählen
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</a>
+</div>
+</div>
+</div>
+</article>
+</div>
+<!-- CTA-Bereich unten -->
+<div class="mt-14 bg-gradient-to-br from-slate-900 via-slate-800 to-teal-950 rounded-3xl p-8 sm:p-10 text-white text-center shadow-xl" id="kurs-auswahl">
+<span class="inline-block px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 font-bold text-xs tracking-wider uppercase mb-3">
+          100% Krankenkassengestützt
+        </span>
+<h3 class="text-2xl sm:text-3xl font-black tracking-tight mb-3">
+          Bereit für schmerzfreie Mobilität und neue Kraft?
+        </h3>
+<p class="text-slate-300 text-sm sm:text-base max-w-xl mx-auto leading-relaxed mb-6">
+          Sichere dir deinen Platz im nächsten 10-Wochen-Live-Kurs. Die Krankenkasse erstattet in der Regel 80 bis 100 % deiner Kursgebühren.
+        </p>
+<div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+<a class="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-sm tracking-wide shadow-lg transition-colors inline-flex items-center justify-center gap-2" href="../Seite 3 Zuschuss/code.html">
+            Jetzt Kursplatz sichern
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path></svg>
+</a>
+<span class="text-xs text-slate-400">Kein Abo • Automatische Bescheinigung am Kursende</span>
+</div>
+</div>
+<!-- Exakte Kontakt-Box aus Screen 102 -->
+<div class="mt-8 bg-emerald-50/80 rounded-2xl border border-emerald-200/70 p-4.5 flex items-start gap-3.5 max-w-2xl mx-auto">
+<div class="w-10 h-10 rounded-xl bg-teal-600 text-white flex items-center justify-center shrink-0 shadow-sm">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<div>
+<h3 class="text-sm font-black text-slate-900">Noch Fragen offen?</h3>
+<p class="text-xs text-slate-600 mt-0.5 leading-relaxed">
+            Schreib Jan persönlich per WhatsApp (<a class="text-teal-700 font-bold hover:underline" href="https://wa.me/4915117834737">+49 151 17834737</a>) oder E-Mail an <a class="text-teal-700 font-bold hover:underline" href="mailto:hallo@sportkurselive.de">hallo@sportkurselive.de</a>.
+          </p>
+</div>
+</div>
+</section>
+</main>
+  <!-- Sticky Booking CTA -->
+  <div class="fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 p-4 pb-6 z-50 flex justify-center shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)]">
+    <a href="../Seite 5 Buchung/code.html" class="w-full max-w-md bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold py-3.5 px-4 rounded-xl shadow-md transition-all flex justify-center items-center gap-2 group">
+      <span>Jetzt Buchen</span>
+      <svg class="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+    </a>
+  </div>
+</body></html>

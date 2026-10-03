@@ -1,0 +1,388 @@
+﻿<!DOCTYPE html><html class="h-full bg-[#f8f9ff]" lang="de" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>SportKurseLive.de | Krankenkassenzertifizierte Präventionskurse</title>
+<!-- Google Fonts: Manrope & Newsreader -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&amp;family=Public+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Manrope', 'sans-serif'],
+            serif: ['Newsreader', 'serif'],
+            body: ['Public Sans', 'sans-serif'],
+          },
+          colors: {
+            surface: {
+              DEFAULT: '#f8f9ff',
+              dim: '#cbdbf5',
+              bright: '#ffffff',
+              low: '#eff4ff',
+            },
+            clinical: {
+              teal: '#0d9488',
+              emerald: '#10b981',
+              navy: '#0b1c30',
+              slate: '#334155',
+              subtle: '#64748b',
+              border: '#e2e8f0',
+              accent: '#0284c7'
+            }
+          }
+        }
+      }
+    }
+  </script>
+<style data-purpose="marquee-animation">
+    @keyframes marquee {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-50%); }
+    }
+    .animate-marquee-infinite {
+      display: flex;
+      width: max-content;
+      animation: marquee 24s linear infinite;
+    }
+    .marquee-mask {
+      -webkit-mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+      mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+    }
+    .editorial-border-b {
+      border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+    }
+    .editorial-border-t {
+      border-top: 1px solid rgba(15, 23, 42, 0.08);
+    }
+  </style>
+</head>
+<body class="min-h-full font-sans text-clinical-navy bg-[#f8f9ff] flex flex-col justify-between selection:bg-emerald-100 selection:text-emerald-900 antialiased max-w-[430px] mx-auto shadow-2xl relative border-x border-slate-200/50">
+<!-- BEGIN: Global Navigation Menu -->
+<div id="global-nav-menu" class="fixed top-2 left-2 z-[9999]">
+  <button id="menu-btn" class="flex flex-col items-center justify-center p-1.5 rounded-lg bg-white/95 backdrop-blur shadow border border-slate-200 hover:bg-slate-50 transition-colors cursor-pointer" onclick="toggleMenu()" aria-label="Menü öffnen" aria-expanded="false">
+    <svg class="w-5 h-5 text-slate-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+    </svg>
+    <span class="text-[9px] font-bold text-slate-600 mt-0.5">Menü</span>
+  </button>
+  <nav id="menu-dropdown" class="hidden absolute top-full left-0 mt-2 w-48 bg-white rounded-xl shadow-xl border border-slate-200 overflow-hidden" role="navigation">
+          <ul class="flex flex-col m-0 p-2 list-none gap-1">
+        <!-- Start -->
+        <li class="m-0">
+          <a href="../index.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-bold text-slate-700 hover:bg-slate-50 transition-colors">
+            <span class="material-symbols-outlined text-[20px] text-slate-400">home</span>
+            Startseite
+          </a>
+        </li>
+        
+        <div class="h-px bg-slate-100 my-1 mx-2"></div>
+        
+        <!-- Flow -->
+        <li class="m-0">
+          <a href="../Seite 2 Kurse auswählen/code.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-bold text-slate-700 hover:bg-emerald-50 hover:text-emerald-700 transition-colors group">
+            <div class="w-6 h-6 rounded bg-emerald-100 text-emerald-700 flex items-center justify-center text-[11px] font-black group-hover:bg-emerald-200 transition-colors">1</div>
+            Kurs wählen
+          </a>
+        </li>
+        <li class="m-0">
+          <a href="../Seite 3 Zuschuss/code.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-bold text-slate-700 hover:bg-emerald-50 hover:text-emerald-700 transition-colors group">
+            <div class="w-6 h-6 rounded bg-emerald-100 text-emerald-700 flex items-center justify-center text-[11px] font-black group-hover:bg-emerald-200 transition-colors">2</div>
+            Kassenzuschuss
+          </a>
+        </li>
+        
+        <div class="h-px bg-slate-100 my-1 mx-2"></div>
+
+        <!-- FAQ -->
+        <li class="m-0">
+          <a href="../Seite 4 fragenundKursbeschreibung/code.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-bold text-slate-700 hover:bg-slate-50 transition-colors">
+            <span class="material-symbols-outlined text-[20px] text-slate-400">help</span>
+            Häufige Fragen
+          </a>
+        </li>
+      </ul>
+  </nav>
+</div>
+<script>
+  function toggleMenu() {
+    const dropdown = document.getElementById('menu-dropdown');
+    dropdown.classList.toggle('hidden');
+  }
+  document.addEventListener('click', (e) => {
+    const menu = document.getElementById('global-nav-menu');
+    if (menu && !menu.contains(e.target)) {
+      document.getElementById('menu-dropdown').classList.add('hidden');
+    }
+  });
+</script>
+<!-- END: Global Navigation Menu -->
+<!-- BEGIN: Mobile Editorial Header / Navigation -->
+<header class="w-full bg-white/90 backdrop-blur-md sticky top-0 z-50 editorial-border-b">
+
+</header>
+<!-- END: Mobile Editorial Header / Navigation -->
+<main class="flex-grow">
+<!-- BEGIN: Hero Editorial Statement (Mobiloptimiert, 24-28px Headline) -->
+<section class="px-4 pt-6 pb-5 text-center" data-purpose="hero-statement">
+
+<!-- Main Headline: Textinhalt EXAKT beibehalten, 24px-28px mobil lesbar -->
+<h1 class="font-serif text-[25px] leading-[1.28] font-normal tracking-tight text-slate-900 mx-auto">
+        Diese Website arbeitet mit allen Gesetzlichen Krankenkassen zusammen und bietet dadurch Sport Kurse mit 
+        <span class="font-sans font-bold text-slate-900 border-b-2 border-emerald-500 pb-0.5 whitespace-nowrap">70% – 100%</span> 
+        Kostenübernahme an.
+      </h1>
+<!-- Secondary text with link: Textinhalt EXAKT beibehalten -->
+<div class="mt-3.5 text-[13px] leading-relaxed text-slate-600 font-normal">
+<span class="">Siehe</span>
+<a class="font-bold text-emerald-600 underline underline-offset-2 decoration-emerald-400 hover:text-emerald-700" href="#nachweise">
+          hier
+        </a>
+<span class="">was deine Krankenkasse zahlt und was für Kurse wir anbieten.</span>
+</div>
+</section>
+<!-- END: Hero Editorial Statement -->
+<!-- BEGIN: Ticker / Marquee Band (Mobil oben im Viewport mit allen 11 Logos) -->
+<section class="w-full bg-white editorial-border-t editorial-border-b py-3.5 overflow-hidden" data-purpose="krankenkassen-logos-stream">
+<div class="px-4 mb-2 text-center">
+<p class="text-[10px] uppercase font-semibold tracking-wider text-slate-400">
+          Anerkannt bei über 95 Gesetzlichen Krankenkassen
+        </p>
+</div>
+<!-- Endless Marquee with TK, BARMER, DAK, AOK, IKK, KKH, hkk, Knappschaft, SBK, BKK, BIG -->
+<div class="relative w-full overflow-hidden flex items-center py-1 marquee-mask">
+<div class="animate-marquee-infinite items-center">
+<!-- LOOP SET 1 -->
+<div class="flex items-center gap-7 pr-7 flex-shrink-0">
+<!-- 1. TK -->
+<div class="flex items-center justify-center h-8 w-16 flex-shrink-0 opacity-85">
+<img alt="Techniker Krankenkasse" class="max-h-7 max-w-full object-contain" src="../logos GKV/Techniker_Krankenkasse_2016_logo.svg.webp">
+</div>
+<!-- 2. BARMER -->
+<div class="flex items-center justify-center h-8 w-20 flex-shrink-0 opacity-85">
+<img alt="BARMER" class="max-h-5 max-w-full object-contain" src="../logos GKV/BARMER_Logo.png">
+</div>
+<!-- 3. DAK Gesundheit -->
+<div class="flex items-center justify-center h-8 w-16 flex-shrink-0 opacity-85">
+<img alt="DAK Gesundheit" class="max-h-7 max-w-full object-contain" src="../logos GKV/DAK-Gesundheit_logo.png">
+</div>
+<!-- 4. AOK -->
+<div class="flex items-center justify-center h-8 w-16 flex-shrink-0 opacity-85">
+<img alt="AOK" class="max-h-6 max-w-full object-contain" src="../logos GKV/AOK-2021 (2).png">
+</div>
+<!-- 5. IKK classic -->
+<div class="flex items-center justify-center h-8 w-18 flex-shrink-0 opacity-85">
+<img alt="IKK classic" class="max-h-6 max-w-full object-contain" src="../logos GKV/Logo_IKK_classic.png">
+</div>
+<!-- 6. KKH -->
+<div class="flex items-center justify-center h-8 w-14 flex-shrink-0 opacity-85">
+<img alt="KKH" class="max-h-5 max-w-full object-contain" src="../logos GKV/KKH_Logo_2023.png">
+</div>
+<!-- 7. hkk -->
+<div class="flex items-center justify-center h-8 w-14 flex-shrink-0 opacity-85">
+<img alt="hkk" class="max-h-7 max-w-full object-contain" src="../logos GKV/Hkk_Logo.png">
+</div>
+<!-- 8. Knappschaft -->
+<div class="flex items-center justify-center h-8 w-20 flex-shrink-0 opacity-85">
+<img alt="Knappschaft" class="max-h-5 max-w-full object-contain" src="../logos GKV/Knappschaft_Logo_08.2003.png">
+</div>
+<!-- 9. SBK -->
+<div class="flex items-center justify-center h-8 w-16 flex-shrink-0 opacity-85">
+<img alt="SBK" class="max-h-6 max-w-full object-contain" src="../logos GKV/Siemens-Betriebskrankenkasse_logo.png">
+</div>
+<!-- 10. BKK firmus -->
+<div class="flex items-center justify-center h-8 w-18 flex-shrink-0 opacity-85">
+<img alt="BKK firmus" class="max-h-5 max-w-full object-contain" src="../logos GKV/BKK-firmus-Logo.png">
+</div>
+<!-- 11. BIG direkt gesund -->
+<div class="flex items-center justify-center h-10 w-28 flex-shrink-0 opacity-85">
+            <img alt="BIG direkt gesund" class="max-h-10 scale-125 max-w-full object-contain" src="../logos GKV/BDG-Logo-RGB-Blau-ohne-Claim.png">
+</div>
+</div>
+<!-- LOOP SET 2 (SEAMLESS DUPLICATE) -->
+<div aria-hidden="true" class="flex items-center gap-7 pr-7 flex-shrink-0">
+<!-- 1. TK -->
+<div class="flex items-center justify-center h-8 w-16 flex-shrink-0 opacity-85">
+<img alt="Techniker Krankenkasse" class="max-h-7 max-w-full object-contain" src="../logos GKV/Techniker_Krankenkasse_2016_logo.svg.webp">
+</div>
+<!-- 2. BARMER -->
+<div class="flex items-center justify-center h-8 w-20 flex-shrink-0 opacity-85">
+<img alt="BARMER" class="max-h-5 max-w-full object-contain" src="../logos GKV/BARMER_Logo.png">
+</div>
+<!-- 3. DAK Gesundheit -->
+<div class="flex items-center justify-center h-8 w-16 flex-shrink-0 opacity-85">
+<img alt="DAK Gesundheit" class="max-h-7 max-w-full object-contain" src="../logos GKV/DAK-Gesundheit_logo.png">
+</div>
+<!-- 4. AOK -->
+<div class="flex items-center justify-center h-8 w-16 flex-shrink-0 opacity-85">
+<img alt="AOK" class="max-h-6 max-w-full object-contain" src="../logos GKV/AOK-2021 (2).png">
+</div>
+<!-- 5. IKK classic -->
+<div class="flex items-center justify-center h-8 w-18 flex-shrink-0 opacity-85">
+<img alt="IKK classic" class="max-h-6 max-w-full object-contain" src="../logos GKV/Logo_IKK_classic.png">
+</div>
+<!-- 6. KKH -->
+<div class="flex items-center justify-center h-8 w-14 flex-shrink-0 opacity-85">
+<img alt="KKH" class="max-h-5 max-w-full object-contain" src="../logos GKV/KKH_Logo_2023.png">
+</div>
+<!-- 7. hkk -->
+<div class="flex items-center justify-center h-8 w-14 flex-shrink-0 opacity-85">
+<img alt="hkk" class="max-h-7 max-w-full object-contain" src="../logos GKV/Hkk_Logo.png">
+</div>
+<!-- 8. Knappschaft -->
+<div class="flex items-center justify-center h-8 w-20 flex-shrink-0 opacity-85">
+<img alt="Knappschaft" class="max-h-5 max-w-full object-contain" src="../logos GKV/Knappschaft_Logo_08.2003.png">
+</div>
+<!-- 9. SBK -->
+<div class="flex items-center justify-center h-8 w-16 flex-shrink-0 opacity-85">
+<img alt="SBK" class="max-h-6 max-w-full object-contain" src="../logos GKV/Siemens-Betriebskrankenkasse_logo.png">
+</div>
+<!-- 10. BKK firmus -->
+<div class="flex items-center justify-center h-8 w-18 flex-shrink-0 opacity-85">
+<img alt="BKK firmus" class="max-h-5 max-w-full object-contain" src="../logos GKV/BKK-firmus-Logo.png">
+</div>
+<!-- 11. BIG direkt gesund -->
+<div class="flex items-center justify-center h-10 w-28 flex-shrink-0 opacity-85">
+            <img alt="BIG direkt gesund" class="max-h-10 scale-125 max-w-full object-contain" src="../logos GKV/BDG-Logo-RGB-Blau-ohne-Claim.png">
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: Ticker / Marquee Band -->
+<!-- BEGIN: VARIANTE 1 - Super kompakte horizontale 3er-Trust-Leiste nebeneinander -->
+<section class="px-3.5 py-6" data-purpose="compact-horizontal-trust-bar" id="nachweise">
+<!-- Section Header -->
+<div class="mb-3.5 text-center">
+<span class="text-[10px] uppercase font-bold tracking-widest text-emerald-600 block">Offizielle Prüfnachweise</span>
+<h2 class="text-base font-serif text-slate-900 mt-0.5">Geprüfte Qualität nach deutschem Präventionsstandard</h2>
+<p class="text-[11px] text-slate-500 mt-1 font-light leading-snug">
+          Transparente Verifikation für Versicherte. Registriert bei der Zentralen Prüfstelle Prävention (ZPP).
+        </p>
+</div>
+<!-- Kompakte 3er-Trust-Bar nebeneinander in einer Reihe -->
+<div class="bg-white rounded-xl border border-slate-200/90 shadow-sm p-2.5">
+<div class="grid grid-cols-3 divide-x divide-slate-100">
+<!-- Element 1: Zertifizierungs.pdf -->
+<div class="flex flex-col items-center text-center px-1.5 py-1 justify-between">
+<span class="text-[9px] font-bold text-slate-400 uppercase tracking-tight">Nachweis 01</span>
+<!-- PDF Icon Box Preview -->
+<div class="my-2 flex flex-col items-center">
+<div class="w-12 h-14 bg-slate-50 border border-slate-200 rounded-md p-1.5 shadow-2xs flex flex-col items-center justify-between">
+<div class="w-5 h-1 bg-red-500 rounded-xs"></div>
+<div class="space-y-1 w-full px-0.5">
+<div class="h-1 bg-slate-200 rounded-full w-full"></div>
+<div class="h-1 bg-slate-200 rounded-full w-3/4"></div>
+<div class="h-1 bg-slate-200 rounded-full w-4/5"></div>
+</div>
+<span class="text-[8px] font-black tracking-tight text-red-600">PDF</span>
+</div>
+</div>
+<div>
+<p class="text-[11px] font-bold text-slate-900 leading-tight">Zertifikat PDF</p>
+<span class="inline-block mt-0.5 px-1 py-0.2 rounded text-[8px] font-semibold bg-slate-100 text-slate-600 border border-slate-200">
+                § 20 SGB V
+              </span>
+</div>
+<a class="mt-2 text-[10px] font-bold text-emerald-700 hover:text-emerald-800 underline underline-offset-2 flex items-center justify-center gap-0.5" href="#download-pdf">
+<svg class="w-2.5 h-2.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+<path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+              Öffnen
+            </a>
+</div>
+<!-- Element 2: ZPP Zertifizierungslogo -->
+<div class="flex flex-col items-center text-center px-1.5 py-1 justify-between">
+<span class="text-[9px] font-bold text-slate-400 uppercase tracking-tight">Nachweis 02</span>
+<!-- ZPP Logo Image -->
+<div class="my-2 w-12 h-14 flex items-center justify-center">
+<img alt="ZPP Zertifikat" class="max-h-14 max-w-full object-contain filter drop-shadow-xs" src="../Zertifizerung/zpp-1.png">
+</div>
+<div>
+<p class="text-[11px] font-bold text-slate-900 leading-tight">ZPP Siegel</p>
+<span class="inline-flex items-center gap-0.5 mt-0.5 px-1 py-0.2 rounded text-[8px] font-semibold bg-emerald-50 text-emerald-700">
+<span class="w-1 h-1 rounded-full bg-emerald-500"></span> Zertifiziert
+              </span>
+</div>
+<span class="mt-2 text-[9px] text-slate-400 font-medium leading-none">
+              Zentrale Stelle
+            </span>
+</div>
+<!-- Element 3: 100% Erstattungslogo -->
+<div class="flex flex-col items-center text-center px-1.5 py-1 justify-between">
+<span class="text-[9px] font-bold text-slate-400 uppercase tracking-tight">Nachweis 03</span>
+<!-- 100% Badge Image -->
+<div class="my-2 w-12 h-14 flex items-center justify-center">
+<img alt="Bis zu 100% Krankenkassen gefördert" class="max-h-14 max-w-full object-contain filter drop-shadow-xs" src="../Zertifizerung/zertifiziert.png">
+</div>
+<div>
+<p class="text-[11px] font-bold text-slate-900 leading-tight">100% Erstattung</p>
+<span class="inline-block mt-0.5 px-1 py-0.2 rounded text-[8px] font-semibold bg-blue-50 text-blue-700">
+                Gesetzlich
+              </span>
+</div>
+<span class="mt-2 text-[9px] text-emerald-700 font-semibold flex items-center gap-0.5 leading-none">
+<svg class="w-2.5 h-2.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+<path clip-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" fill-rule="evenodd"></path>
+</svg>
+              Ohne Rezept
+            </span>
+</div>
+</div>
+<!-- Micro Info Footer inside Bar -->
+<div class="mt-2 pt-2 border-t border-slate-100 flex items-center justify-center gap-1.5 text-[9px] text-slate-500 text-center font-light">
+<svg class="w-3 h-3 text-emerald-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+<path clip-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" fill-rule="evenodd"></path>
+</svg>
+<span class="">Gültig bundesweit für alle Vdek &amp; RVO Kassen (TK, AOK, Barmer etc.)</span>
+</div>
+</div>
+</section>
+<!-- END: VARIANTE 1 -->
+<!-- BEGIN: Quick Check Strip (Dunkler Aktionskasten) -->
+<section class="px-3.5 pb-8 text-center" data-purpose="cta-banner">
+<div class="bg-slate-900 rounded-xl p-5 text-white shadow-xl relative overflow-hidden">
+<div class="relative z-10">
+<span class="text-[10px] font-bold uppercase tracking-widest text-emerald-400">Präventionskurse Online &amp; Live</span>
+<h3 class="text-lg font-serif font-normal mt-1.5 text-white leading-snug">
+            Finde heraus, wie viel deine Krankenkasse bezuschusst
+          </h3>
+<p class="text-slate-300 text-[11px] mt-2 font-light leading-relaxed">
+            Wähle einfach deine Kasse aus und erhalte in wenigen Sekunden deinen persönlichen Erstattungsanspruch für zertifizierte Rückenschule, Yoga und Ganzkörpertraining.
+          </p>
+<div class="mt-4 flex flex-col gap-2.5">
+<a class="w-full py-2.5 px-4 bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold text-xs uppercase tracking-wider rounded transition-colors shadow-md text-center" href="../Seite 3 Zuschuss/code.html">
+              Krankenkasse prüfen
+            </a>
+<a class="w-full py-2.5 px-4 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white font-semibold text-xs uppercase tracking-wider rounded transition-colors text-center" href="../Seite 2 Kurse auswählen/code.html">
+              Alle Kurse durchstöbern
+            </a>
+</div>
+</div>
+</div>
+</section>
+<!-- END: Quick Check Strip -->
+</main>
+<!-- BEGIN: Minimal Editorial Mobile Footer -->
+<footer class="w-full bg-white editorial-border-t py-5 px-4 text-center text-xs text-slate-500" data-purpose="site-footer">
+<div class="flex items-center justify-center gap-2 mb-2 font-semibold text-slate-800 text-[11px]">
+<span class="">SportKurseLive.de</span>
+<span class="">—</span>
+<span class="font-normal text-slate-500">Klinische Präzision &amp; Vitalität</span>
+</div>
+<div class="flex items-center justify-center gap-3 text-[11px] text-slate-500">
+<a class="hover:text-slate-800 transition-colors" href="#">Impressum</a>
+<span class="">•</span>
+<a class="hover:text-slate-800 transition-colors" href="#">Datenschutz</a>
+<span class="">•</span>
+<a class="hover:text-slate-800 transition-colors" href="#">ZPP Leitfaden Prävention</a>
+</div>
+</footer>
+<!-- END: Minimal Editorial Mobile Footer -->
+
+
+</body></html>
+

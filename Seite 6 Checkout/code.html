@@ -1,0 +1,289 @@
+﻿<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Kasse & Bezahlung | SportKurseLive.de</title>
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400..800;1,6..72,400..800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Manrope', 'sans-serif'], serif: ['Newsreader', 'serif'] },
+        }
+      }
+    }
+  </script>
+  <style>
+      html, body {
+        min-height: 100%;
+        height: auto;
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch;
+        margin: 0;
+        padding: 0;
+        font-family: 'Manrope', sans-serif;
+      }
+      body { background-color: #f8fafc; }
+      
+      /* Custom Radio Button Styles */
+      .payment-radio:checked + div {
+        border-color: #10b981;
+        background-color: #ecfdf5;
+      }
+      .payment-radio:checked + div .radio-circle {
+        border-color: #10b981;
+        border-width: 5px;
+      }
+  </style>
+</head>
+<body class="antialiased text-slate-800 pb-20">
+
+  <!-- BEGIN: Global Navigation Menu -->
+  <div class="fixed top-2 left-2 z-[9999]">
+    <button onclick="toggleMenu()" class="w-10 h-10 bg-white rounded-full shadow-md flex items-center justify-center border border-slate-200 text-slate-600 hover:text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-colors">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+    </button>
+    <div class="text-[9px] font-bold text-slate-500 text-center mt-0.5 tracking-tight uppercase">Menü</div>
+    
+    <nav id="menu-dropdown" class="hidden absolute top-12 left-0 w-48 bg-white rounded-xl shadow-xl border border-slate-200 overflow-hidden">
+            <ul class="flex flex-col m-0 p-2 list-none gap-1">
+        <!-- Start -->
+        <li class="m-0">
+          <a href="../index.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-bold text-slate-700 hover:bg-slate-50 transition-colors">
+            <span class="material-symbols-outlined text-[20px] text-slate-400">home</span>
+            Startseite
+          </a>
+        </li>
+        
+        <div class="h-px bg-slate-100 my-1 mx-2"></div>
+        
+        <!-- Flow -->
+        <li class="m-0">
+          <a href="../Seite 2 Kurse auswählen/code.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-bold text-slate-700 hover:bg-emerald-50 hover:text-emerald-700 transition-colors group">
+            <div class="w-6 h-6 rounded bg-emerald-100 text-emerald-700 flex items-center justify-center text-[11px] font-black group-hover:bg-emerald-200 transition-colors">1</div>
+            Kurs wählen
+          </a>
+        </li>
+        <li class="m-0">
+          <a href="../Seite 3 Zuschuss/code.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-bold text-slate-700 hover:bg-emerald-50 hover:text-emerald-700 transition-colors group">
+            <div class="w-6 h-6 rounded bg-emerald-100 text-emerald-700 flex items-center justify-center text-[11px] font-black group-hover:bg-emerald-200 transition-colors">2</div>
+            Kassenzuschuss
+          </a>
+        </li>
+        
+        <div class="h-px bg-slate-100 my-1 mx-2"></div>
+
+        <!-- FAQ -->
+        <li class="m-0">
+          <a href="../Seite 4 fragenundKursbeschreibung/code.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-bold text-slate-700 hover:bg-slate-50 transition-colors">
+            <span class="material-symbols-outlined text-[20px] text-slate-400">help</span>
+            Häufige Fragen
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <script>
+    function toggleMenu() {
+      const dropdown = document.getElementById('menu-dropdown');
+      dropdown.classList.toggle('hidden');
+    }
+    document.addEventListener('click', (e) => {
+      const menu = document.getElementById('global-nav-menu');
+      if (menu && !menu.contains(e.target)) {
+        document.getElementById('menu-dropdown').classList.add('hidden');
+      }
+    });
+  </script>
+  <!-- END: Global Navigation Menu -->
+
+  <main class="w-full max-w-md mx-auto pt-16 px-4 flex flex-col gap-6">
+    
+    <header class="text-center">
+      <h1 class="text-2xl font-extrabold text-slate-900 tracking-tight">Kasse</h1>
+      <p class="text-sm text-slate-500 mt-1">Sichere dir jetzt deinen Platz im Kurs.</p>
+    </header>
+
+    <!-- Warenkorb Übersicht -->
+    <section>
+      <h2 class="text-[13px] font-extrabold text-slate-800 uppercase tracking-wide mb-2 pl-1">Dein Warenkorb</h2>
+      <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200 flex flex-col gap-3">
+        
+        <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+          <div class="flex flex-col">
+            <span class="text-xs font-bold text-slate-500">Kurs</span>
+            <span id="checkout-course-title" class="font-extrabold text-slate-900 text-[15px]">Lade...</span>
+          </div>
+          <span class="font-bold text-slate-900">149,00 €</span>
+        </div>
+        
+        <div class="flex items-center justify-between text-emerald-600 pb-3 border-b border-slate-100">
+          <div class="flex flex-col">
+            <span class="text-[11px] font-bold uppercase tracking-wider">Zuschuss Krankenkasse</span>
+            <span id="checkout-insurance-title" class="font-extrabold text-[13px] text-emerald-700">Lade...</span>
+          </div>
+          <span id="checkout-refund" class="font-extrabold">- 149,00 €</span>
+        </div>
+
+        <div class="flex items-center justify-between">
+          <span class="text-sm font-extrabold text-slate-900">Effektive Kosten für dich</span>
+          <span id="checkout-final-price" class="text-xl font-extrabold text-slate-900">0,00 €</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- WICHTIGE INFO: Vorkasse & Rückerstattung -->
+    <section>
+      <div class="bg-blue-50 border border-blue-200 rounded-2xl p-4 flex gap-3 shadow-sm relative overflow-hidden">
+        <div class="absolute -right-4 -top-4 w-16 h-16 bg-blue-200/50 rounded-full blur-xl pointer-events-none"></div>
+        <span class="material-symbols-outlined text-blue-600 text-3xl shrink-0 mt-0.5">info</span>
+        <div class="flex flex-col">
+          <h3 class="text-[13px] font-extrabold text-blue-900 mb-1">Ablauf der Erstattung</h3>
+          <p class="text-[11.5px] font-medium text-blue-800/90 leading-snug">
+            Du bezahlst heute die Kursgebühr von <strong class="text-blue-900 font-extrabold">149,00 €</strong> im Voraus. 
+            Nach erfolgreichem Abschluss deiner 10 Einheiten erhältst du automatisch die Bescheinigung, 
+            welche du bei deiner <strong id="info-insurance-name" class="text-blue-900 font-extrabold">Krankenkasse</strong> einreichst, um das Geld <strong class="text-blue-900 font-extrabold">direkt auf dein Konto</strong> erstattet zu bekommen.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Persönliche Daten Formular -->
+    <section>
+      <h2 class="text-[13px] font-extrabold text-slate-800 uppercase tracking-wide mb-2 pl-1">Deine Daten</h2>
+      <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200 flex flex-col gap-4">
+        
+        <div class="grid grid-cols-2 gap-3">
+          <div class="flex flex-col gap-1">
+            <label class="text-[11px] font-bold text-slate-600 ml-1">Vorname</label>
+            <input type="text" placeholder="Max" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:border-emerald-500 focus:bg-white transition-colors">
+          </div>
+          <div class="flex flex-col gap-1">
+            <label class="text-[11px] font-bold text-slate-600 ml-1">Nachname</label>
+            <input type="text" placeholder="Mustermann" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:border-emerald-500 focus:bg-white transition-colors">
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-1">
+          <label class="text-[11px] font-bold text-slate-600 ml-1">E-Mail Adresse</label>
+          <input type="email" placeholder="max@beispiel.de" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:border-emerald-500 focus:bg-white transition-colors">
+        </div>
+        
+        <div class="flex flex-col gap-1">
+          <label class="text-[11px] font-bold text-slate-600 ml-1">Straße & Hausnummer</label>
+          <input type="text" placeholder="Musterstraße 1" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:border-emerald-500 focus:bg-white transition-colors">
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Zahlungsmethode -->
+    <section>
+      <h2 class="text-[13px] font-extrabold text-slate-800 uppercase tracking-wide mb-2 pl-1">Zahlungsart wählen</h2>
+      <div class="flex flex-col gap-3">
+        
+        <!-- PayPal -->
+        <label class="relative cursor-pointer group">
+          <input type="radio" name="payment" class="peer payment-radio sr-only" checked>
+          <div class="bg-white border-2 border-slate-200 rounded-2xl p-4 flex items-center gap-4 transition-all hover:bg-slate-50 shadow-sm">
+            <div class="radio-circle w-5 h-5 rounded-full border-2 border-slate-300 transition-all shrink-0"></div>
+            <div class="h-6 flex items-center justify-center font-bold text-[#003087] italic tracking-tighter text-lg shrink-0">PayPal</div>
+            <span class="text-[11px] font-semibold text-slate-500 ml-auto">Sofort & Sicher</span>
+          </div>
+        </label>
+
+        <!-- Klarna -->
+        <label class="relative cursor-pointer group">
+          <input type="radio" name="payment" class="peer payment-radio sr-only">
+          <div class="bg-white border-2 border-slate-200 rounded-2xl p-4 flex items-center gap-4 transition-all hover:bg-slate-50 shadow-sm">
+            <div class="radio-circle w-5 h-5 rounded-full border-2 border-slate-300 transition-all shrink-0"></div>
+            <div class="h-6 flex items-center justify-center font-bold text-black text-lg shrink-0">Klarna.</div>
+            <span class="text-[11px] font-semibold text-slate-500 ml-auto">Rechnung / Raten</span>
+          </div>
+        </label>
+        
+        <!-- Apple Pay -->
+        <label class="relative cursor-pointer group">
+          <input type="radio" name="payment" class="peer payment-radio sr-only">
+          <div class="bg-white border-2 border-slate-200 rounded-2xl p-4 flex items-center gap-4 transition-all hover:bg-slate-50 shadow-sm">
+            <div class="radio-circle w-5 h-5 rounded-full border-2 border-slate-300 transition-all shrink-0"></div>
+            <div class="h-6 flex items-center justify-center font-semibold text-black text-[15px] shrink-0"><span class="material-symbols-outlined text-[18px] mr-1">apple</span> Pay</div>
+          </div>
+        </label>
+
+        <!-- Kreditkarte -->
+        <label class="relative cursor-pointer group">
+          <input type="radio" name="payment" class="peer payment-radio sr-only">
+          <div class="bg-white border-2 border-slate-200 rounded-2xl p-4 flex items-center gap-4 transition-all hover:bg-slate-50 shadow-sm">
+            <div class="radio-circle w-5 h-5 rounded-full border-2 border-slate-300 transition-all shrink-0"></div>
+            <div class="flex flex-col justify-center">
+              <span class="text-[14px] font-extrabold text-slate-800 leading-none mb-0.5">Kreditkarte</span>
+              <span class="text-[10px] font-bold text-slate-400">Visa, Mastercard, Amex</span>
+            </div>
+            <span class="material-symbols-outlined text-[20px] text-slate-300 ml-auto">credit_card</span>
+          </div>
+        </label>
+
+      </div>
+    </section>
+
+    <!-- Submit CTA & AGB -->
+    <section class="mt-4">
+      <label class="flex items-start gap-3 mb-4 cursor-pointer">
+        <input type="checkbox" class="mt-1 w-4 h-4 text-emerald-600 rounded border-slate-300 focus:ring-emerald-500 shrink-0">
+        <span class="text-[10px] text-slate-500 leading-tight">
+          Ich habe die <a href="#" class="text-emerald-600 underline">AGB</a> und die <a href="#" class="text-emerald-600 underline">Datenschutzerklärung</a> gelesen und bin einverstanden. Ich stimme der Abbuchung von 149,00 € zu.
+        </span>
+      </label>
+
+      <button onclick="alert('Buchung erfolgreich simuliert!')" class="w-full bg-slate-900 hover:bg-slate-800 text-white font-extrabold py-4 px-4 rounded-xl shadow-lg shadow-slate-900/20 transition-all flex justify-center items-center gap-2 group">
+        <span class="material-symbols-outlined text-[18px]">lock</span>
+        <span>Jetzt zahlungspflichtig buchen</span>
+      </button>
+    </section>
+
+  </main>
+
+  <script>
+    const courseData = {
+       'rueckenfit': { title: 'Rückenfit' },
+       'ganzkoerper': { title: 'Ganzkörpertraining' },
+       'pilates': { title: 'Rückenfit mit Pilates' }
+    };
+    
+    const refundData = {
+      tk: { name: 'Techniker Krankenkasse (TK)', copay: '0,00 €', refund: '149,00 €' },
+      aok: { name: 'AOK', copay: '0,00 €', refund: '149,00 €' },
+      barmer: { name: 'Barmer', copay: '37,00 €', refund: '112,00 €' },
+      dak: { name: 'DAK Gesundheit', copay: '0,00 €', refund: '149,00 €' },
+      ikk: { name: 'IKK classic', copay: '0,00 €', refund: '149,00 €' },
+      hkk: { name: 'hkk Krankenkasse', copay: '0,00 €', refund: '149,00 €' },
+      bkk: { name: 'BKK', copay: '0,00 €', refund: '149,00 €' },
+      knappschaft: { name: 'Knappschaft', copay: '29,80 €', refund: '119,20 €' },
+      andere: { name: 'gesetzliche Krankenkasse', copay: '0,00 € - 29,80 €', refund: 'mind. 119,20 €' }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+       const selectedCourseId = localStorage.getItem('selectedCourse') || 'rueckenfit';
+       const cData = courseData[selectedCourseId] || courseData['rueckenfit'];
+       
+       const selectedInsKey = localStorage.getItem('selectedInsurance') || 'tk';
+       const iData = refundData[selectedInsKey] || refundData['tk'];
+
+       // Apply data
+       document.getElementById('checkout-course-title').textContent = cData.title;
+       document.getElementById('checkout-insurance-title').textContent = iData.name;
+       document.getElementById('checkout-refund').textContent = '- ' + iData.refund;
+       document.getElementById('checkout-final-price').textContent = iData.copay;
+       
+       // Info Box Text update
+       document.getElementById('info-insurance-name').textContent = iData.name;
+    });
+  </script>
+</body>
+</html>

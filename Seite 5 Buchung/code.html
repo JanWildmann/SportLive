@@ -1,0 +1,230 @@
+﻿<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Zusammenfassung & Buchung | SportKurseLive.de</title>
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400..800;1,6..72,400..800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Manrope', 'sans-serif'], serif: ['Newsreader', 'serif'] },
+        }
+      }
+    }
+  </script>
+  <style>
+      html, body {
+        min-height: 100%;
+        height: auto;
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch;
+        margin: 0;
+        padding: 0;
+        font-family: 'Manrope', sans-serif;
+      }
+      body { background-color: #f8fafc; }
+  </style>
+</head>
+<body class="antialiased text-slate-800">
+
+  <!-- BEGIN: Global Navigation Menu -->
+  <div class="fixed top-2 left-2 z-[9999]">
+    <button onclick="toggleMenu()" class="w-10 h-10 bg-white rounded-full shadow-md flex items-center justify-center border border-slate-200 text-slate-600 hover:text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-colors">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+    </button>
+    <div class="text-[9px] font-bold text-slate-500 text-center mt-0.5 tracking-tight uppercase">Menü</div>
+    
+    <nav id="menu-dropdown" class="hidden absolute top-12 left-0 w-48 bg-white rounded-xl shadow-xl border border-slate-200 overflow-hidden">
+            <ul class="flex flex-col m-0 p-2 list-none gap-1">
+        <!-- Start -->
+        <li class="m-0">
+          <a href="../index.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-bold text-slate-700 hover:bg-slate-50 transition-colors">
+            <span class="material-symbols-outlined text-[20px] text-slate-400">home</span>
+            Startseite
+          </a>
+        </li>
+        
+        <div class="h-px bg-slate-100 my-1 mx-2"></div>
+        
+        <!-- Flow -->
+        <li class="m-0">
+          <a href="../Seite 2 Kurse auswählen/code.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-bold text-slate-700 hover:bg-emerald-50 hover:text-emerald-700 transition-colors group">
+            <div class="w-6 h-6 rounded bg-emerald-100 text-emerald-700 flex items-center justify-center text-[11px] font-black group-hover:bg-emerald-200 transition-colors">1</div>
+            Kurs wählen
+          </a>
+        </li>
+        <li class="m-0">
+          <a href="../Seite 3 Zuschuss/code.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-bold text-slate-700 hover:bg-emerald-50 hover:text-emerald-700 transition-colors group">
+            <div class="w-6 h-6 rounded bg-emerald-100 text-emerald-700 flex items-center justify-center text-[11px] font-black group-hover:bg-emerald-200 transition-colors">2</div>
+            Kassenzuschuss
+          </a>
+        </li>
+        
+        <div class="h-px bg-slate-100 my-1 mx-2"></div>
+
+        <!-- FAQ -->
+        <li class="m-0">
+          <a href="../Seite 4 fragenundKursbeschreibung/code.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-bold text-slate-700 hover:bg-slate-50 transition-colors">
+            <span class="material-symbols-outlined text-[20px] text-slate-400">help</span>
+            Häufige Fragen
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <script>
+    function toggleMenu() {
+      const dropdown = document.getElementById('menu-dropdown');
+      dropdown.classList.toggle('hidden');
+    }
+    document.addEventListener('click', (e) => {
+      const menu = document.getElementById('global-nav-menu');
+      if (menu && !menu.contains(e.target)) {
+        document.getElementById('menu-dropdown').classList.add('hidden');
+      }
+    });
+  </script>
+  <!-- END: Global Navigation Menu -->
+
+  <main class="w-full max-w-md mx-auto pt-16 pb-28 px-4 flex flex-col gap-5">
+    
+    <header class="text-center">
+      <h1 class="text-2xl font-extrabold text-slate-900 tracking-tight">Buchung abschließen</h1>
+      <p class="text-sm text-slate-500 mt-1">Überprüfe deine Auswahl und schließe die Anmeldung ab.</p>
+    </header>
+
+    <!-- Selected Course & Insurance -->
+    <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200 flex flex-col gap-3">
+      <h2 class="text-xs font-bold text-slate-400 uppercase tracking-wide">Deine Auswahl</h2>
+      <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+        <img id="summary-course-img" src="../bilder person/RückenBandZug.png" class="w-16 h-16 rounded-xl object-cover border border-slate-200">
+        <div class="flex flex-col">
+          <span class="text-xs font-bold text-emerald-600">Gewählter Kurs</span>
+          <span id="summary-course-title" class="font-extrabold text-slate-800 text-[15px]">Rückenfit</span>
+        </div>
+      </div>
+      <div class="flex items-center gap-3 pt-1">
+        <div class="w-16 h-10 flex items-center justify-center shrink-0">
+          <span class="material-symbols-outlined text-3xl text-emerald-600">health_and_safety</span>
+        </div>
+        <div class="flex flex-col">
+          <span class="text-xs font-bold text-emerald-600">Kostenübernahme durch</span>
+          <span id="summary-insurance-title" class="font-extrabold text-slate-800 text-[15px]">Lade...</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- On-Top Bonus -->
+    <div class="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-2xl p-4 shadow-sm border border-emerald-200 relative overflow-hidden">
+      <div class="absolute -right-6 -top-6 w-24 h-24 bg-emerald-200/50 rounded-full blur-2xl pointer-events-none"></div>
+      
+      <div class="flex gap-4 items-center">
+        <div class="relative w-24 h-24 shrink-0 rounded-xl overflow-hidden border-2 border-white shadow-sm">
+          <img src="../bilder person/RückenBandZug.png" class="w-full h-full object-cover">
+          <div class="absolute bottom-1 left-1 bg-amber-400 text-slate-900 text-[9px] font-extrabold px-1.5 py-0.5 rounded shadow-sm">Kostenlos</div>
+        </div>
+        <div class="flex flex-col">
+          <span class="inline-flex items-center gap-1 text-xs font-extrabold text-emerald-700 bg-emerald-100/80 px-2 py-0.5 rounded-full w-fit mb-1 border border-emerald-200">
+            <span class="material-symbols-outlined text-[14px]">redeem</span> On-Top-Bonus
+          </span>
+          <p class="text-[13px] font-semibold text-slate-700 leading-tight">Ein Trainingsband wird dir kostenlos zugeschickt für den Kurs.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Payment Calculation -->
+    <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200 flex flex-col">
+      <h2 class="text-xs font-bold text-slate-400 uppercase tracking-wide mb-3">Zusammenfassung</h2>
+      
+      <div class="flex justify-between items-center py-1">
+        <span class="text-sm text-slate-500 font-medium">Originalpreis</span>
+        <span class="text-sm text-slate-400 font-bold line-through">149,00 €</span>
+      </div>
+      
+      <div class="flex justify-between items-center py-1 text-emerald-600 font-bold">
+        <span class="text-sm flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">check_circle</span> Krankenkassen-Zuschuss</span>
+        <span id="summary-refund" class="text-sm">- 149,00 €</span>
+      </div>
+      
+      <div class="border-t border-slate-200 my-3"></div>
+      
+      <div class="flex justify-between items-center">
+        <span class="text-[15px] font-extrabold text-slate-900">Dein Preis heute</span>
+        <span id="summary-final-price" class="text-xl font-extrabold text-slate-900">0,00 €</span>
+      </div>
+      
+      <p id="summary-badge-text" class="text-xs text-center font-bold text-emerald-700 bg-emerald-50 rounded-lg py-1.5 mt-3 border border-emerald-100">
+        🎉 Komplett kostenlos für dich!
+      </p>
+    </div>
+
+    <!-- Payment Methods -->
+    <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200">
+      <h2 class="text-xs font-bold text-slate-400 uppercase tracking-wide mb-3 text-center">Sicher bezahlen mit</h2>
+      <div class="flex justify-center items-center gap-3 flex-wrap">
+        <!-- PayPal -->
+        <div class="h-8 bg-[#FFC439] rounded px-3 flex items-center justify-center font-bold text-[#003087] italic tracking-tighter text-sm">PayPal</div>
+        <!-- Apple Pay -->
+        <div class="h-8 bg-black rounded px-3 flex items-center justify-center font-semibold text-white text-sm"><span class="material-symbols-outlined text-[16px] mr-1">apple</span> Pay</div>
+        <!-- Klarna -->
+        <div class="h-8 bg-[#FFB3C7] rounded px-3 flex items-center justify-center font-bold text-black text-sm">Klarna.</div>
+        <!-- Credit Card -->
+        <div class="h-8 bg-slate-100 border border-slate-200 rounded px-3 flex items-center justify-center font-bold text-slate-600 text-[10px] uppercase">Mastercard / Visa</div>
+      </div>
+    </div>
+
+    <!-- Submit CTA -->
+    <button onclick="window.location.href='../Seite 6 Checkout/code.html'" class="w-full bg-slate-900 hover:bg-slate-800 text-white font-extrabold py-4 px-4 rounded-xl shadow-lg shadow-slate-900/20 transition-all flex justify-center items-center gap-2 group cursor-pointer">
+      <span>Weiter zur Kasse</span>
+      <svg class="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+    </button>
+    <p class="text-[10px] text-center text-slate-400 mt-2">Du gehst im nächsten Schritt zur sicheren Dateneingabe.</p>
+
+  </main>
+
+  <script>
+    const courseData = {
+       'rueckenfit': { title: 'Rückenfit', img: '../bilder person/RückenBandZug.png' },
+       'ganzkoerper': { title: 'Ganzkörpertraining', img: '../bilder person/SteheSeiteZieh.png' },
+       'pilates': { title: 'Rückenfit mit Pilates', img: '../bilder person/Beckenheben.png' }
+    };
+    
+    // Using identical logic from Seite 3
+    const refundData = {
+      tk: { name: 'Techniker Krankenkasse (TK)', copay: '0,00 €', refund: '149,00 €', badge: '🎉 Komplett kostenlos für dich!' },
+      aok: { name: 'AOK', copay: '0,00 €', refund: '149,00 €', badge: '🎉 Komplett kostenlos für dich!' },
+      barmer: { name: 'Barmer', copay: '37,00 €', refund: '112,00 €', badge: 'Dein Zuschuss: 112 €' },
+      dak: { name: 'DAK Gesundheit', copay: '0,00 €', refund: '149,00 €', badge: '🎉 Komplett kostenlos für dich!' },
+      ikk: { name: 'IKK classic', copay: '0,00 €', refund: '149,00 €', badge: '🎉 Komplett kostenlos für dich!' },
+      hkk: { name: 'hkk Krankenkasse', copay: '0,00 €', refund: '149,00 €', badge: '🎉 Komplett kostenlos für dich!' },
+      bkk: { name: 'BKK', copay: '0,00 €', refund: '149,00 €', badge: '🎉 Komplett kostenlos für dich!' },
+      knappschaft: { name: 'Knappschaft', copay: '29,80 €', refund: '119,20 €', badge: 'Dein Zuschuss: 80%' },
+      andere: { name: 'gesetzliche Krankenkasse', copay: '0,00 € - 29,80 €', refund: 'mind. 119,20 €', badge: 'Zuschuss garantiert' }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+       const selectedCourseId = localStorage.getItem('selectedCourse') || 'rueckenfit';
+       const cData = courseData[selectedCourseId] || courseData['rueckenfit'];
+       
+       const selectedInsKey = localStorage.getItem('selectedInsurance') || 'tk';
+       const iData = refundData[selectedInsKey] || refundData['tk'];
+
+       // Apply course
+       document.getElementById('summary-course-title').textContent = cData.title;
+       document.getElementById('summary-course-img').src = cData.img;
+
+       // Apply insurance and prices
+       document.getElementById('summary-insurance-title').textContent = iData.name;
+       document.getElementById('summary-refund').textContent = '- ' + iData.refund;
+       document.getElementById('summary-final-price').textContent = iData.copay;
+       document.getElementById('summary-badge-text').textContent = iData.badge;
+    });
+  </script>
+</body>
+</html>

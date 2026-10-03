@@ -1,0 +1,403 @@
+﻿<!DOCTYPE html><html lang="de" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport">
+<title>SportKurseLive.de - Kursauswahl</title>
+<!-- Google Fonts: Manrope -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS v3 with plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Manrope', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#ecfdf5',
+              100: '#d1fae5',
+              500: '#10b981',
+              600: '#059669',
+              700: '#047857',
+              dark: '#0f172a'
+            }
+          },
+          keyframes: {
+            popIn: {
+              '0%': { opacity: '0', transform: 'scale(0.95) translateY(10px)' },
+              '100%': { opacity: '1', transform: 'scale(1) translateY(0)' },
+            },
+            fadeIn: {
+              '0%': { opacity: '0', transform: 'translateY(6px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+            pulseSlow: {
+              '0%, 100%': { transform: 'scale(1)' },
+              '50%': { transform: 'scale(1.15)' }
+            }
+          },
+          animation: {
+            popIn: 'popIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+            fadeIn: 'fadeIn 0.25s ease-out forwards',
+            pulseSlow: 'pulseSlow 1.8s ease-in-out infinite'
+          }
+        }
+      }
+    }
+  </script>
+<!-- Mobile Viewport Smooth Scroll Styles -->
+<style data-purpose="viewport-scroll">
+    html, body {
+      min-height: 100%;
+      height: auto;
+      overflow-y: auto !important;
+      -webkit-overflow-scrolling: touch;
+      margin: 0;
+      padding: 0;
+      font-family: 'Manrope', sans-serif;
+    }
+    .safe-top {
+      padding-top: env(safe-area-inset-top, 12px);
+    }
+    .safe-bottom {
+      padding-bottom: env(safe-area-inset-bottom, 24px);
+    }
+  </style>
+<meta content="mobile_blank" name="shell-type"></head>
+<body class="text-slate-800 antialiased min-h-screen bg-white flex flex-col items-center px-4 py-4 safe-top safe-bottom">
+<!-- BEGIN: Global Navigation Menu -->
+<div id="global-nav-menu" class="fixed top-2 left-2 z-[9999]">
+  <button id="menu-btn" class="flex flex-col items-center justify-center p-1.5 rounded-lg bg-white/95 backdrop-blur shadow border border-slate-200 hover:bg-slate-50 transition-colors cursor-pointer" onclick="toggleMenu()" aria-label="Menü öffnen" aria-expanded="false">
+    <svg class="w-5 h-5 text-slate-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+    </svg>
+    <span class="text-[9px] font-bold text-slate-600 mt-0.5">Menü</span>
+  </button>
+  <nav id="menu-dropdown" class="hidden absolute top-full left-0 mt-2 w-48 bg-white rounded-xl shadow-xl border border-slate-200 overflow-hidden" role="navigation">
+          <ul class="flex flex-col m-0 p-2 list-none gap-1">
+        <!-- Start -->
+        <li class="m-0">
+          <a href="../index.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-bold text-slate-700 hover:bg-slate-50 transition-colors">
+            <span class="material-symbols-outlined text-[20px] text-slate-400">home</span>
+            Startseite
+          </a>
+        </li>
+        
+        <div class="h-px bg-slate-100 my-1 mx-2"></div>
+        
+        <!-- Flow -->
+        <li class="m-0">
+          <a href="../Seite 2 Kurse auswählen/code.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-bold text-slate-700 hover:bg-emerald-50 hover:text-emerald-700 transition-colors group">
+            <div class="w-6 h-6 rounded bg-emerald-100 text-emerald-700 flex items-center justify-center text-[11px] font-black group-hover:bg-emerald-200 transition-colors">1</div>
+            Kurs wählen
+          </a>
+        </li>
+        <li class="m-0">
+          <a href="../Seite 3 Zuschuss/code.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-bold text-slate-700 hover:bg-emerald-50 hover:text-emerald-700 transition-colors group">
+            <div class="w-6 h-6 rounded bg-emerald-100 text-emerald-700 flex items-center justify-center text-[11px] font-black group-hover:bg-emerald-200 transition-colors">2</div>
+            Kassenzuschuss
+          </a>
+        </li>
+        
+        <div class="h-px bg-slate-100 my-1 mx-2"></div>
+
+        <!-- FAQ -->
+        <li class="m-0">
+          <a href="../Seite 4 fragenundKursbeschreibung/code.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-bold text-slate-700 hover:bg-slate-50 transition-colors">
+            <span class="material-symbols-outlined text-[20px] text-slate-400">help</span>
+            Häufige Fragen
+          </a>
+        </li>
+      </ul>
+  </nav>
+</div>
+<script>
+  function toggleMenu() {
+    const dropdown = document.getElementById('menu-dropdown');
+    dropdown.classList.toggle('hidden');
+  }
+  document.addEventListener('click', (e) => {
+    const menu = document.getElementById('global-nav-menu');
+    if (menu && !menu.contains(e.target)) {
+      document.getElementById('menu-dropdown').classList.add('hidden');
+    }
+  });
+</script>
+<!-- END: Global Navigation Menu -->
+<!-- BEGIN: MainContent -->
+<main class="w-full max-w-md mx-auto flex flex-col justify-between min-h-screen pb-28" data-purpose="course-selection-view">
+<div class="flex flex-col w-full gap-4">
+<!-- Top Section: Course Card & Insurance Selector -->
+<div class="w-full flex flex-col gap-4">
+<!-- Course Card (Exact replica of Slide 1 Rückenfit card) -->
+<div class="w-full bg-white rounded-2xl border border-slate-200/90 shadow-sm p-3.5 flex items-center gap-3.5 transition-all">
+<div class="flex flex-col shrink-0 gap-1"><span class="self-start bg-slate-900 text-white text-[8px] font-extrabold px-1.5 py-0.5 rounded leading-none">Live Zoom</span><div class="relative w-24 h-20 rounded-xl overflow-hidden shrink-0 border border-slate-200 shadow-2xs"><img id="course-card-img" alt="Gewählter Kurs" class="w-full h-full object-cover object-center" src="../bilder person/RückenBandZug.png"><span class="absolute bottom-1 left-1 bg-emerald-700 text-white text-[7.5px] font-bold px-1.5 py-0.5 rounded leading-none">Top Favorit</span></div></div>
+<div class="flex flex-col text-left min-w-0 flex-1 justify-center">
+<div class="flex items-center justify-between gap-1"><h2 id="course-card-title" class="font-extrabold text-[15px] text-slate-900 leading-tight truncate">Rückenfit</h2><span class="inline-flex items-center gap-1 text-[10px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full shrink-0 shadow-2xs"><span class="material-symbols-outlined text-[13px] text-emerald-700">check_circle</span>Ausgewählt</span></div>
+<div class="flex items-center gap-1.5 mt-1">
+<span id="course-card-duration" class="text-[11px] font-medium text-slate-500 shrink-0 whitespace-nowrap">10x 60 Min.</span>
+<span class="text-[8px] text-slate-400">•</span>
+<span id="course-card-tag" class="inline-flex items-center text-[10px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded leading-none shrink-0">Rückengesundheit</span>
+</div>
+<p id="course-card-desc" class="text-[11px] text-slate-500 mt-1 truncate leading-tight">Stärkt Rücken &amp; Löst Verspannung...</p>
+</div>
+</div>
+<!-- Insurance Selector Field (Clean Names Only) -->
+<div class="bg-white rounded-2xl p-4 border border-slate-200/90 shadow-sm flex flex-col gap-3">
+<div class="flex items-center justify-between gap-2">
+<label for="insurance-select" class="text-[13.5px] font-bold text-slate-800 leading-tight block">Sehe was deine Krankenkasse zahlt:</label>
+<img alt="Zertifizierter Präventionskurs" class="w-20 h-20 object-contain shrink-0 drop-shadow-xs" src="../Zertifizerung/zertifiziert.png">
+</div>
+<div class="relative w-full">
+<select class="w-full appearance-none bg-slate-50 text-slate-800 text-[13px] font-semibold rounded-xl px-3.5 py-3 pr-10 border border-slate-300 focus:outline-none focus:border-emerald-500 focus:bg-white transition-colors cursor-pointer" id="insurance-select" onchange="handleInsuranceChange(this.value)">
+<option disabled="" selected="" value="">Klicke hier und wähle deine Krankenkasse...</option>
+<option value="tk">Techniker Krankenkasse (TK)</option>
+<option value="aok">AOK</option>
+<option value="barmer">Barmer</option>
+<option value="dak">DAK Gesundheit</option>
+<option value="ikk">IKK classic</option>
+<option value="hkk">hkk Krankenkasse</option>
+<option value="bkk">BKK (Betriebskrankenkassen)</option>
+<option value="knappschaft">Knappschaft</option>
+<option value="andere">Andere gesetzliche Krankenkasse</option>
+</select>
+<div class="absolute right-3 top-1/2 -translate-y-1/2 flex items-center pointer-events-none gap-0.5 text-slate-400">
+<span class="material-symbols-outlined text-[20px]">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Loading State Card (Appears for exactly 1.5s after select change, initially hidden) -->
+<div class="bg-white rounded-2xl p-6 border border-emerald-100 shadow-sm flex-col items-center justify-center gap-3.5 transition-all hidden" id="loading-card" style="display: none;">
+<div class="relative w-12 h-12 flex items-center justify-center">
+<div class="absolute inset-0 rounded-full bg-emerald-100/60 animate-ping opacity-60"></div>
+<div class="w-10 h-10 rounded-full bg-emerald-50 border border-emerald-200 flex items-center justify-center text-emerald-700">
+<span class="material-symbols-outlined text-[24px] animate-pulse">health_and_safety</span>
+</div>
+</div>
+<div class="flex flex-col items-center text-center gap-1">
+<div class="flex items-center gap-2">
+<div class="w-4 h-4 border-2 border-emerald-200 border-t-[#00a86b] rounded-full animate-spin"></div>
+<span class="text-[13px] font-extrabold text-slate-800" id="loading-text">Prüfe Erstattung der Barmer...</span>
+</div>
+<span class="text-[11px] font-medium text-slate-400">Prüfung mit Krankenkassen-Datenbank</span>
+</div>
+</div>
+<!-- Reimbursement Result Container (Initially TOTALLY HIDDEN, pops up after 1.5s) -->
+<div class="bg-white rounded-2xl p-5 border border-emerald-200 shadow-sm flex-col gap-3.5 transition-all hidden" id="reimbursement-box" style="display: none;">
+<!-- Congratulatory Header & Badge -->
+<div class="flex items-start gap-3 border-b border-slate-100 pb-3.5">
+<div class="flex flex-col min-w-0 flex-1">
+<div class="inline-flex items-center gap-1 self-start bg-emerald-50 text-emerald-700 text-[10px] font-bold px-2 py-0.5 rounded-full border border-emerald-200 mb-1.5">
+<span class="material-symbols-outlined text-[13px] text-emerald-700">check_circle</span>
+<span class="" id="congrats-pill">Kostenerstattung bestätigt</span>
+</div>
+<h4 class="text-[14.5px] font-extrabold text-slate-900 leading-snug tracking-tight" id="refund-congrats-text">Glückwunsch! Die Barmer zahlt 75% deines gewählten Kurses.</h4>
+</div>
+</div>
+<!-- Quick Breakdown summary -->
+<div class="flex items-center justify-between bg-emerald-50/70 border border-emerald-100/90 px-3.5 py-2.5 rounded-xl">
+<div class="flex flex-col">
+<span class="text-[10px] text-slate-500 font-semibold">Dein Eigenanteil:</span>
+<span class="text-[16px] text-slate-900 font-extrabold" id="copay-text">37,00 €</span>
+</div>
+<div class="flex items-center gap-1.5 bg-slate-700 text-white px-2.5 py-1 rounded-full shadow-2xs" id="free-badge">
+<span class="material-symbols-outlined text-[13px]">check_circle</span>
+<span class="text-[11px] font-bold" id="badge-label">112 € Zuschuss</span>
+</div>
+</div>
+<!-- Info CTA Section requested -->
+<div class="flex flex-col gap-2 pt-1 border-t border-slate-100">
+<div class="flex flex-col items-center justify-center gap-1 text-center bg-emerald-50/70 border border-emerald-100/90 rounded-xl p-2.5 shadow-2xs" id="course-info-subheading">
+<div class="flex items-center gap-1.5 text-slate-900 font-extrabold text-[12.5px] leading-snug">
+<span class="">Sehe hier was im Kurs enthalten ist und was er dir bringt</span>
+</div>
+<a href="../Seite 4 fragenundKursbeschreibung/code.html#kurse" class="flex items-center justify-center gap-1 text-[11px] font-bold text-emerald-700 hover:text-emerald-800 transition-colors cursor-pointer">
+  <span class="leading-none underline decoration-emerald-300 underline-offset-2">Hier alle Kursdetails einsehen</span>
+</a>
+</div><button id="proceed-to-booking" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl py-3 px-4 font-bold text-[14px] flex items-center justify-center gap-2 shadow-md transition-colors cursor-pointer"><span>Weiter zur Buchung</span><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg></button>
+
+</div>
+</div>
+</div>
+</div>
+
+<!-- Info Micro Modal -->
+<div class="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs p-4 flex items-center justify-center hidden" id="details-modal">
+<div class="bg-white rounded-2xl p-5 w-full max-w-sm shadow-2xl flex flex-col gap-3 border border-slate-100">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-emerald-700 text-[22px]">health_and_safety</span>
+<h2 class="text-[14px] text-slate-900 font-bold">Kurs- &amp; Erstattungs-Details</h2>
+</div>
+<button class="text-slate-400 hover:text-slate-700 p-1 cursor-pointer" onclick="toggleDetailsModal()" type="button">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<div class="flex flex-col gap-2 text-[12px] text-slate-600 leading-relaxed">
+<p class="">• <strong>10 Live-Einheiten</strong> à 60 Minuten mit qualifizierten Physiotherapeuten &amp; Sportwissenschaftlern.</p>
+<p class="">• <strong>ZPP Prüf-ID:</strong> Anerkannt von der Zentralen Prüfstelle Prävention.</p>
+<p class="">• <strong>Rückerstattung:</strong> Nach min. 80% Teilnahme erhältst du die Teilnahmebescheinigung für die automatische Erstattung durch deine Krankenkasse.</p>
+</div>
+<button class="w-full bg-emerald-700 text-white py-2.5 rounded-xl text-[12px] font-bold mt-1 shadow transition-colors cursor-pointer" onclick="toggleDetailsModal()" type="button">
+          Schließen
+        </button>
+</div>
+</div>
+</main>
+<!-- END: MainContent -->
+<script>
+  const refundData = {
+    tk: { name: 'Techniker Krankenkasse (TK)', percentVal: '100%', copay: '0,00 €', badge: 'Kostenlos für dich!', free: true },
+    aok: { name: 'AOK', percentVal: '100%', copay: '0,00 €', badge: 'Kostenlos für dich!', free: true },
+    barmer: { name: 'Barmer', percentVal: '75%', copay: '37,00 €', badge: '112 € Zuschuss', free: false },
+    dak: { name: 'DAK Gesundheit', percentVal: '100%', copay: '0,00 €', badge: 'Kostenlos für dich!', free: true },
+    ikk: { name: 'IKK classic', percentVal: '100%', copay: '0,00 €', badge: 'Kostenlos für dich!', free: true },
+    hkk: { name: 'hkk Krankenkasse', percentVal: '100%', copay: '0,00 €', badge: 'Kostenlos für dich!', free: true },
+    bkk: { name: 'BKK', percentVal: '100%', copay: '0,00 €', badge: 'Kostenlos für dich!', free: true },
+    knappschaft: { name: 'Knappschaft', percentVal: '80%', copay: '29,80 €', badge: '80% Erstattung', free: false },
+    andere: { name: 'gesetzliche Krankenkasse', percentVal: 'mind. 80%', copay: '0,00 € - 29,80 €', badge: 'Zuschuss garantiert', free: false }
+  };
+
+  let calculationTimer = null;
+
+  function handleInsuranceChange(key) {
+      window.selectedInsuranceKey = key;
+    if (!key) return;
+    const data = refundData[key] || refundData.tk;
+
+    const loadingCard = document.getElementById('loading-card');
+    const resultBox = document.getElementById('reimbursement-box');
+    const loadingText = document.getElementById('loading-text');
+
+    // 1. Hide result box immediately
+    if (resultBox) {
+      resultBox.style.display = 'none';
+      resultBox.classList.add('hidden');
+      resultBox.classList.remove('flex', 'animate-popIn');
+    }
+
+    // 2. Show loading card for exactly 1.5 seconds (1500ms)
+    if (loadingCard) {
+      if (loadingText) {
+        loadingText.textContent = `Prüfe Erstattung der ${data.name}...`;
+      }
+      loadingCard.style.display = 'flex';
+      loadingCard.classList.remove('hidden');
+      loadingCard.classList.add('flex', 'animate-fadeIn');
+      loadingCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    if (calculationTimer) clearTimeout(calculationTimer);
+
+    // 3. Exactly 1500ms timeout
+    calculationTimer = setTimeout(() => {
+      // Update values
+      const congratsText = document.getElementById('refund-congrats-text');
+      const copayElem = document.getElementById('copay-text');
+      const badgeElem = document.getElementById('free-badge');
+      const badgeLabel = document.getElementById('badge-label');
+
+      if (congratsText) {
+        congratsText.textContent = `Glückwunsch! Die ${data.name} zahlt ${data.percentVal} deines gewählten Kurses.`;
+      }
+      if (copayElem) copayElem.textContent = data.copay;
+      if (badgeLabel) badgeLabel.textContent = data.badge;
+
+      if (badgeElem) {
+        if (data.free) {
+          badgeElem.className = 'flex items-center gap-1.5 bg-emerald-700 text-white px-2.5 py-1 rounded-full shadow-2xs';
+        } else {
+          badgeElem.className = 'flex items-center gap-1.5 bg-slate-700 text-white px-2.5 py-1 rounded-full shadow-2xs';
+        }
+      }
+
+      // Hide loading card
+      if (loadingCard) {
+        loadingCard.style.display = 'none';
+        loadingCard.classList.add('hidden');
+        loadingCard.classList.remove('flex', 'animate-fadeIn');
+      }
+
+      // Pop in the reimbursement result card
+      if (resultBox) {
+        resultBox.style.display = 'flex';
+        resultBox.classList.remove('hidden');
+        resultBox.classList.add('flex', 'animate-popIn');
+        resultBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+
+      if (window.navigator && window.navigator.vibrate) {
+        window.navigator.vibrate(20);
+      }
+    }, 1500);
+  }
+
+  function toggleDetailsModal() {
+    const modal = document.getElementById('details-modal');
+    if (modal) {
+      modal.classList.toggle('hidden');
+    }
+  }
+</script>
+
+
+
+
+  <!-- BEGIN: Dynamic Course Logic -->
+  <script>
+    const courseData = {
+       'rueckenfit': {
+          title: 'Rückenfit',
+          img: '../bilder person/RückenBandZug.png',
+          duration: '10x 60 Min.',
+          tag: 'Rückengesundheit',
+          desc: 'Stärkt Rücken & Löst Verspannung...'
+       },
+       'ganzkoerper': {
+          title: 'Ganzkörpertraining',
+          img: '../bilder person/SteheSeiteZieh.png',
+          duration: '10x 60 Min.',
+          tag: 'Funktionelle Fitness',
+          desc: 'Fettverbrennung & Muskelaufbau'
+       },
+       'pilates': {
+          title: 'Rückenfit mit Pilates',
+          img: '../bilder person/Beckenheben.png',
+          duration: '10x 60 Min.',
+          tag: 'Rücken & Balance',
+          desc: 'Tiefe Rumpf- & Rückenstabilität'
+       }
+    };
+
+    
+
+    document.addEventListener('DOMContentLoaded', () => {
+       const selectedId = localStorage.getItem('selectedCourse') || 'rueckenfit';
+       const cData = courseData[selectedId] || courseData['rueckenfit'];
+       
+       // Update DOM
+       document.getElementById('course-card-title').textContent = cData.title;
+       document.getElementById('course-card-img').src = cData.img;
+       document.getElementById('course-card-duration').textContent = cData.duration;
+       document.getElementById('course-card-tag').textContent = cData.tag;
+       document.getElementById('course-card-desc').textContent = cData.desc;
+
+       const proceedBtn = document.getElementById('proceed-to-booking');
+       if(proceedBtn) {
+           proceedBtn.addEventListener('click', () => {
+               if(window.selectedInsuranceKey) {
+                   localStorage.setItem('selectedInsurance', window.selectedInsuranceKey);
+                   window.location.href = '../Seite 5 Buchung/code.html';
+               } else {
+                   alert('Bitte wähle zuerst deine Krankenkasse aus.');
+               }
+           });
+       }
+    });
+  </script>
+  <!-- END: Dynamic Course Logic -->
+</body></html>
